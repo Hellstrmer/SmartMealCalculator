@@ -1,15 +1,22 @@
 ﻿@page "/ingredients"
-
+@inject IngredientService IngredientService
 <PageTitle>Innehåll</PageTitle>
 
 <h1>Innehåll</h1>
 
 <p role="status"></p>
 <div class="add-ing">
-    <input placeholder="Lägg till ingredienser" @bind="NewIngredient" @oninput="HandleInput" @onkeydown="AddIngredients" />
+    <input placeholder="Lägg till ingredienser" @bind="NewIngredientString" @oninput="HandleInput" @onkeydown="AddIngredients" />
     <input placeholder="Lägg till kalorier (/100g)" @bind="NewCalorie" @oninput="HandleInputCalorie" @onkeydown="AddCalorie" />
     <input placeholder="Lägg till mängd (g)" @bind="NewAmount" @oninput="HandleInputAmount" @onkeydown="AddAmount" />
     <input placeholder="Portioner" @bind="NewPortion" @oninput="HandleInputPortion" @onkeydown="AddPortion" />
+</div>
+<div class="ingredient-row">
+    <span>@NewIngredient.Name</span>
+    <span>@NewIngredient.ShowCalories</span>
+    <span>@NewIngredient.ShowAmount</span>
+    <span>@NewIngredient.ShowPortions</span>
+    <span>@NewIngredient.ShowPerPortions</span>
 </div>
 <div>
     @foreach (var (ingredient, index) in IngredientsList.Select((ingredient, index) => (ingredient, index)))
@@ -35,7 +42,9 @@
 
 @code {
     private List<Ingredients> IngredientsList = new List<Ingredients>();
-    private string? NewIngredient;
+    //private List<Ingredients> IngredientsList2 = new List<Ingredients>();
+    private Ingredients NewIngredient = new();
+    private string? NewIngredientString;
     private float? NewCalorie;
     private float? NewAmount;
     private float? TotalCalories = 0;
@@ -45,6 +54,20 @@
     private int? NewPortion;
     private int Index = 0;
 
+    //Requests
+    protected override async Task OnInitializedAsync()
+    {
+        IngredientsList = await IngredientService.GetIngredientsAsync();
+    }
+
+    private async Task AddIngredient()
+    {
+        await IngredientService.AddIngredientAsync(NewIngredient);
+        IngredientsList = await IngredientService.GetIngredientsAsync();
+
+        UpdateTotal(NewIngredient.Portions);
+        NewIngredient = new Ingredients();
+    }
 
     private void SetIndex(int index)
     {
@@ -57,7 +80,7 @@
 
     private void HandleInput(ChangeEventArgs e)
     {        
-        NewIngredient = e.Value.ToString();
+        NewIngredientString = e.Value.ToString();
 
     }
     private void HandleInputCalorie(ChangeEventArgs e)
@@ -86,17 +109,18 @@
     {
         if (e.Key == "Enter")
         {
-            if (!string.IsNullOrWhiteSpace(NewIngredient))
+            if (!string.IsNullOrWhiteSpace(NewIngredientString))
             {
-                IngredientsList.Add(new Ingredients
+                NewIngredient = (new Ingredients
                     {
-                        Name = NewIngredient,
+                        Name = NewIngredientString,
                         Calories = 0,
                         Amount = 0,
                         Portions = 0,
                         perPortion = 0
                     });
-                NewIngredient = string.Empty;
+                //AddIngredient();
+                NewIngredientString = string.Empty;
                 Index = IngredientsList.Count - 1;
             }
         }
@@ -108,36 +132,39 @@
         {
             if (NewCalorie.HasValue)
             {
-                IngredientsList[Index].Calories = NewCalorie;
-                IngredientsList[Index].ShowCalories = $"{NewCalorie} Kcal/100g";
+                NewIngredient.Calories = NewCalorie;
+                //IngredientsList[Index].Calories = NewCalorie;
+                NewIngredient.ShowCalories = $"{NewCalorie} Kcal/100g";
                 NewCalorie = null;
-                UpdateTotal(IngredientsList[Index].Portions);
+                //UpdateTotal(NewIngredient.Portions);
             }
         }
     }
     private void AddAmount(KeyboardEventArgs e)
     {
         if (e.Key == "Enter")
-        {        
-            IngredientsList[Index].Amount = NewAmount;
-            IngredientsList[Index].ShowAmount = $"{NewAmount} g";
+        {
+            NewIngredient.Amount = NewAmount;
+            //IngredientsList[Index].Amount = NewAmount;
+            NewIngredient.ShowAmount = $"{NewAmount} g";
             NewAmount = null;
-            UpdateTotal(IngredientsList[Index].Portions);
+            //UpdateTotal(IngredientsList[Index].Portions);
         }
     }
     private void AddPortion(KeyboardEventArgs e)
     {
         if (e.Key == "Enter")
         {
-            Ingredients Ing = IngredientsList[Index];
-            Ing.Portions = NewPortion;
-            Ing.ShowPortions = $"{NewPortion} st";
-            if(Ing.Amount.HasValue && Ing.Calories.HasValue && Ing.Portions.HasValue)
-            {
-                Ing.perPortion = (Ing.Amount / 100) * Ing.Calories / Ing.Portions;
-                Ing.ShowPerPortions = $"{Math.Floor((Ing.perPortion ?? 0)):F0} Kcal/Portion";
-                UpdateTotal(Ing.Portions);
-            }
+            // Ingredients Ing = IngredientsList[Index];
+            // NewIngredient.Portions = NewPortion;
+            NewIngredient.Portions = NewPortion;
+            NewIngredient.ShowPortions = $"{NewPortion} st";
+            if (NewIngredient.Amount.HasValue && NewIngredient.Calories.HasValue && NewIngredient.Portions.HasValue)
+                {
+                    NewIngredient.perPortion = (NewIngredient.Amount / 100) * NewIngredient.Calories / NewIngredient.Portions;
+                    NewIngredient.ShowPerPortions = $"{Math.Floor((NewIngredient.perPortion ?? 0)):F0} Kcal/Portion";                    
+                }
+            AddIngredient();
         }
     }
 

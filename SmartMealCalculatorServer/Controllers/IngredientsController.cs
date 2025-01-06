@@ -1,83 +1,30 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using SmartMealCalculatorServer;
+// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace SmartMealCalculatorServer.Controllers
 {
-    public class IngredientsController : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class IngredientsController : ControllerBase
     {
-        // GET: IngredientsController
-        public ActionResult Index()
+        private static List<Ingredients> IngredientsList = new List<Ingredients>();
+        [HttpGet]
+        public IActionResult GetIngredients()
         {
-            return View();
+            return Ok(IngredientsList);
         }
 
-        // GET: IngredientsController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: IngredientsController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: IngredientsController/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public IActionResult AddIngredient(Ingredients ingredient)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
 
-        // GET: IngredientsController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: IngredientsController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
+            if (ingredient == null || string.IsNullOrWhiteSpace(ingredient.Name))
             {
-                return RedirectToAction(nameof(Index));
+                return BadRequest("Invalid Ingredient.");
             }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: IngredientsController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: IngredientsController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            IngredientsList.Add(ingredient);
+            return Ok(IngredientsList);
         }
     }
 }
