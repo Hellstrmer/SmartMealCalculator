@@ -1,0 +1,188 @@
+﻿@page "/serachproduct"
+@inject IngredientService IngredientService
+@inject OpenFoodFactsService OpenFoodFactsService
+@using OpenFoodFactsCSharp.Models;
+<PageTitle>Sök varor</PageTitle>
+
+<h1>Sök varor</h1>
+
+<p role="status"></p>
+<div class="add-ing">
+    <input placeholder="Lägg till ingredienser" @bind="NewIngredientString" @oninput="HandleInput" @onkeydown="(e) => AddIngredients(e)" @ref="ingredientInput" />
+    <input placeholder="Lägg till märke" @bind="NewBrand" @oninput="HandleInputBrand" @onkeydown="(e) => AddBrand(e)" @ref="BrandInput" />
+    <input placeholder="Lägg till kalorier (/100g)" @bind="NewCalorie" @oninput="HandleInputCalorie" @onkeydown="(e) => AddCalorie(e)" @ref="calorieInput" />
+    <button @onclick="btn_AddRecord">Lägg till produkt</button>
+    <button @onclick="btn_DeleteRecord">Ta bort produkt</button>
+    <button @onclick="(e) => Search(NewIngredient.ProductName)">Sök databas</button>
+</div>
+<div class="active-ingredient-row">
+    <span>@NewIngredient.ProductName</span>
+    <span>@($"Märke: {NewIngredient.Brands} ")</span>
+    <span>@($"{NewIngredient.EnergyKcal100g} Kcal/100g")</span>
+</div>
+<div>
+    @if (IngredientsList != null && IngredientsList.Any())
+    {
+        @foreach (var (ingredient, index) in IngredientsList.Select((ingredient, index) => (ingredient, index)))
+        {
+            <div class="ingredient-row @GetRowClass(index)" @onclick="() => SetIndex(index)">
+                <span>@($"{ingredient.ProductName}")</span>
+                <span>@($"{ingredient.Brands}")</span>
+                <span>@($"{ingredient.EnergyKcal100g} Kcal/100g")</span>
+                <span>@($"{ingredient.Proteins100g} Protein/100g")</span>
+            </div>
+        }
+    }
+</div>
+
+@code {
+    private List<Ingredients> IngredientsList = new List<Ingredients>();
+    private Ingredients NewIngredient = new Ingredients();
+    private Product searchResult = new Product();
+    private string? NewIngredientString;
+    private string? NewBrand;
+    private float? NewCalorie;
+    private int Index = 0;
+    private int IndexOFF = 0;
+    private List<Product> products;
+    private List<Ingredients> FoundIngredients = new List<Ingredients>();
+
+    //ElementReference
+    private ElementReference ingredientInput;
+    private ElementReference BrandInput;
+    private ElementReference calorieInput;
+
+    //Requests
+    protected override async Task OnInitializedAsync()
+    {
+        IngredientsList = await IngredientService.GetIngredientsAsync();
+    }
+
+    private async Task AddIngredient(Ingredients ing)
+    {
+        await IngredientService.AddIngredientAsync(ing);
+        IngredientsList = await IngredientService.GetIngredientsAsync();
+        NewIngredient = new Ingredients();
+    }
+
+    private async Task btn_DeleteRecord()
+    {
+        await IngredientService.DeleteIngredientAsync(IngredientsList[Index].ProductName);
+        IngredientsList = await IngredientService.GetIngredientsAsync();
+    }
+    private async Task btn_AddRecord()
+    {
+        //await AddIngredient(NewIngredient);
+        NewIngredient.UseCount = 0;
+        NewIngredient.Created = DateTime.Now;
+        await IngredientService.AddIngredientAsync(NewIngredient);
+        IngredientsList = await IngredientService.GetIngredientsAsync();
+        NewIngredient = new Ingredients();
+    }
+    //Private Database
+    private void SetIndex(int index)
+    {
+        Index = index;
+        NewIngredient = IngredientsList[Index];
+    }
+    private string GetRowClass(int index)
+    {
+        return index == Index ? "selected-row" : string.Empty;
+    }
+    #region Handle Inputs
+    private void HandleInput(ChangeEventArgs e)
+    {        
+        NewIngredientString = e.Value.ToString();
+
+    }
+    private void HandleInputBrand(ChangeEventArgs e)
+    {
+        NewBrand = e.Value.ToString();        
+    }
+    private void HandleInputCalorie(ChangeEventArgs e)
+    {
+        if (float.TryParse(e.Value.ToString(), out float result))
+        {
+            NewCalorie = result;
+        }
+    }
+    #endregion
+    #region Add To Newingredient
+    private async Task AddIngredients(KeyboardEventArgs e)
+    {
+        if (e.Key == "Enter")
+        {
+            if (!string.IsNullOrWhiteSpace(NewIngredientString))
+            {
+                NewIngredient = (new Ingredients
+                    {
+                        ProductName = NewIngredientString,
+                        Amount = 0,
+                        Portions = 0,
+                        PerPortion = 0,
+                        Brands = "",
+                        Salt100g = 0,
+                        Fat100g = 0,
+                        Sugars100g = 0,
+                        Carbohydrates100g = 0,
+                        EnergyKcal100g = 0,
+                        Proteins100g = 0
+                    });
+                NewIngredientString = string.Empty;
+                Index = IngredientsList.Count - 1;
+
+                await BrandInput.FocusAsync();
+            }
+        }
+    }
+    private async Task AddBrand(KeyboardEventArgs e)
+    {
+        if (e.Key == "Enter")
+        {
+            if (!string.IsNullOrWhiteSpace(NewBrand))
+            {
+                NewIngredient.Brands = NewBrand;
+                NewBrand = null;
+                await calorieInput.FocusAsync();
+            }
+        }
+    }
+
+    private async Task AddCalorie(KeyboardEventArgs e)
+    {
+        if (e.Key == "Enter")
+        {
+            if (NewCalorie.HasValue)
+            {
+                NewIngredient.EnergyKcal100g = NewCalorie;
+                await ingredientInput.FocusAsync();
+                NewCalorie = 0;
+            }
+        }
+    }
+    #endregion
+
+    private async Task Search(string SearchName)
+    {
+        if (SearchName != null)
+        {
+            var result = await OpenFoodFactsService.SearchProductAsync(SearchName);
+            foreach (var product in result.Products)
+            {
+                Ingredients ing = new Ingredients();
+                ing.Code = product.Code;
+                ing.ProductName = product.ProductName;
+                ing.Brands = product.Brands;
+                ing.Salt100g = product.Nutriments.Salt100g;
+                ing.Fat100g = product.Nutriments.Fat100g;
+                ing.Sugars100g = product.Nutriments.Sugars100g;
+                ing.Carbohydrates100g = product.Nutriments.Carbohydrates100g;
+                ing.EnergyKcal100g = product.Nutriments.EnergyKcal100g;
+                ing.Proteins100g = product.Nutriments.Proteins100g;
+                ing.Created = DateTime.Now;
+                FoundIngredients.Add(ing);
+                await AddIngredient(ing);
+            }
+        }
+    }
+}

@@ -9,10 +9,11 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services.AddScoped(sp => new HttpClient 
 { 
-    BaseAddress = new Uri("http://localhost:5099")
-    
+    BaseAddress = new Uri(builder.Configuration["ApiBaseUrl"])
 });
 
 builder.Services.AddScoped<IngredientService>();
+builder.Services.AddScoped<MealService>();
+builder.Services.AddScoped<OpenFoodFactsService>();
 
 await builder.Build().RunAsync();

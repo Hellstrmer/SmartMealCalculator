@@ -1,9 +1,47 @@
-.vs/
-*.vsidx
-*.vscode/
+# .NET-specific ignores
 bin/
 obj/
-*.suo
+.vs/
+.vscode/
+.idea/
+
+# Docker-specific ignores
+.docker/
+docker-compose.override.yml
+*.db
+
+# SQLite database file (if it exists locally)
+*.sqlite
+*.sqlite3
+
+# Log files
+*.log
+
+# User-specific files
 *.user
+*.suo
 *.userosscache
 *.sln.docstates
+
+# Temporary files
+Thumbs.db
+ehthumbs.db
+
+# OS-specific files
+.DS_Store      # macOS
+desktop.ini    # Windows
+$RECYCLE.BIN/  # Windows
+
+# Secrets files (you can add the paths to sensitive configuration files)
+appsettings.Development.json
+appsettings.Production.json
+secrets.json
+
+# JetBrains Rider
+.idea/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp

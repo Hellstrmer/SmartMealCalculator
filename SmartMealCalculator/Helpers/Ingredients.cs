@@ -1,15 +1,23 @@
-﻿namespace SmartMealCalculator
+﻿using OpenFoodFactsCSharp.Models;
+using System.ComponentModel.DataAnnotations.Schema;
+namespace SmartMealCalculator
 {
     public class Ingredients
     {
-        public string? Name { get; set; }
-        public float? Calories { get; set; }
-        public string? ShowCalories { get; set; }
+        public int Id { get; set; }
+        public string? Code { get; set; }
+        public int? UseCount { get; set; }
+        public string? ProductName { get; set; }
         public float? Amount { get; set; }
-        public string? ShowAmount { get; set; }
         public int? Portions { get; set; }
-        public string? ShowPortions { get; set; }
-        public float? perPortion { get; set; }
-        public string? ShowPerPortions { get; set; }
+        public float? PerPortion { get; set; }
+        public string Brands { get; set; }
+        public float? Salt100g { get; set; }
+        public float? Fat100g { get; set; }
+        public float? Sugars100g { get; set; }
+        public float? Carbohydrates100g { get; set; }
+        public float? EnergyKcal100g { get; set; }
+        public float? Proteins100g { get; set; }
+        public DateTime? Created { get; set; }
     }
 }

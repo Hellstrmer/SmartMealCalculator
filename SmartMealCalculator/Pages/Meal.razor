@@ -1,0 +1,314 @@
+﻿@page "/meal"
+@inject MealService MealService
+@inject OpenFoodFactsService OpenFoodFactsService
+@inject IJSRuntime JSRuntime
+@using OpenFoodFactsCSharp.Models;
+
+<PageTitle>Måltid</PageTitle>
+
+<h1>Måltid</h1>
+
+<p role="status"></p>
+<div class="add-ing">
+    <BlazoredTypeahead SearchMethod="SearchIngredient"
+                       TValue="Ingredients"
+                       TItem="Ingredients"
+                       Value="NewIngredient"
+                       ValueChanged="HandleSearch"
+                       ValueExpression="@(()=> NewIngredient)"
+                       @ref="typeaheadRef"
+                       Class="blazored-typeahead__input">        
+        <SelectedTemplate>
+            @if (string.IsNullOrEmpty(context.ProductName) && string.IsNullOrEmpty(context.Brands))
+            {
+                <text>Sök produkt..</text>
+            }
+            else
+            {
+                @context.ProductName
+                @if (!string.IsNullOrEmpty(context.Brands))
+                {
+                    <text>- @context.Brands</text>
+                }
+            }
+        </SelectedTemplate>
+        <ResultTemplate>
+            @context.ProductName - @context.Brands
+        </ResultTemplate>
+        <NotFoundTemplate>
+            Inga resultat
+        </NotFoundTemplate>
+    </BlazoredTypeahead>
+
+    <input placeholder="Lägg till kalorier (/100g)" @bind="NewCalorie" @oninput="HandleInputCalorie" @onkeydown="(e) => AddCalorie(e)" @ref="calorieInput" />
+    <input placeholder="Lägg till mängd (g)" @bind="NewAmount" @oninput="HandleInputAmount" @onkeydown="(e) => AddAmount(e)" @ref="amountInput" />
+    <input placeholder="Portioner" @bind="NewPortion" @oninput="HandleInputPortion" @onkeydown="(e) => AddPortion(e)" @ref="portionInput"  />
+</div>
+ <div>
+    @if (IsLoading)
+    {
+        <p class="loading-indicator">Laddar...</p>
+    }
+</div> 
+
+<div class="active-ingredient-row">
+    <span>@NewIngredient.ProductName</span>
+    <span>@($"{NewIngredient.EnergyKcal100g} Kcal/100g")</span>
+    <span>@($"{NewIngredient.Amount} g")</span>
+    <span>@($"{NewIngredient.Portions} st")</span>
+    <span>@($"{NewIngredient.PerPortion} Kcal/Portion")</span>
+</div>
+        @foreach (var (ingredient, index) in IngredientsList.Select((ingredient, index) => (ingredient, index)))
+        {
+            <div class="ingredient-row @GetRowClass(index)" @onclick="() => SetIndex(index)">
+                <span>@($"{ingredient.ProductName}")</span>
+                <span>@($"{ingredient.EnergyKcal100g} Kcal/100g")</span>
+                <span>@($"{ingredient.Amount} g")</span>
+                <span>@($"{ingredient.Portions} st")</span>
+                <span>@($"{Math.Floor((ingredient.PerPortion ?? 0)):F0} Kcal/Portion")</span>
+            </div>
+        }
+    
+
+<div class="ingredient-row">
+    @if (TotalCalories > 0)
+    {
+        <h4>Totalt:</h4>
+        <span>@($"{TotalCalories} Kcal")</span>
+        <span>@($"{TotalAmount} g")</span>
+        <span>@($"{TotalPortion} st")</span>
+        <span>@($"{Math.Floor((TotalPerPortion ?? 0)):F0} Kcal/Portion")</span>
+    }
+</div> 
+
+<div class="add-ing">
+    <button @onclick="btn_DeleteRecord">Ta bort innehåll</button>
+    <button @onclick="btn_EmptyRecord">Ny måltid</button>
+</div>
+
+@code {
+    private BlazoredTypeahead<Ingredients, Ingredients> typeaheadRef;
+    private List<Ingredients> IngredientsList = new List<Ingredients>();
+    private Ingredients NewIngredient = new Ingredients();
+    private Product searchResult = new Product();
+    private Ingredients SelectedIngredient;
+    private bool IsLoading = false;
+    private string? NewIngredientString;
+    private float? NewCalorie;
+    private float? NewAmount;
+    private float? TotalCalories = 0;
+    private float? TotalAmount = 0;
+    private float? TotalPortion = 0;
+    private float? TotalPerPortion = 0;
+    private int? NewPortion;
+    private int Index = 0;
+    private List<Product> products;
+    private List<Ingredients> FoundIngredients = new List<Ingredients>();
+
+    //ElementReference
+    private ElementReference ingredientInput;
+    private ElementReference calorieInput;
+    private ElementReference amountInput;
+    private ElementReference portionInput;
+
+    //Requests
+    protected override async Task OnInitializedAsync()
+    {
+        IngredientsList = await MealService.UpdateIngredientsAsync();
+    }
+    #region Searchbox    
+    //Get searchresult from server and move focus to amount when done
+    private async Task<IEnumerable<Ingredients>> SearchIngredient(string name)
+    {
+        IsLoading = true;
+        await Task.Delay(1);
+        try
+        {
+            await Task.Delay(1);
+            var response = await MealService.GetIngredientsAsync(name);
+            if (response.Count == 0)
+            {
+                await Search(name);
+                response = await MealService.GetIngredientsAsync(name);
+            }
+            return response;
+        }
+        finally
+        {
+            IsLoading = false;
+            await Task.Delay(1);
+        }
+    }
+
+
+    //Handle search input
+    private void HandleSearch(Ingredients ingredients)
+    {
+        if (ingredients == null) return;
+        NewIngredient = ingredients;
+        NewIngredient.UseCount ++;
+        amountInput.FocusAsync();
+    }
+    #endregion
+
+    #region Add Ingredient
+    //add the selected ingredient to the server
+    private async Task AddIngredient(Ingredients ing)
+    {
+        await MealService.AddIngredientAsync(ing);
+        IngredientsList = await MealService.UpdateIngredientsAsync();
+        await MealService.UpdateDatabaseAsync(ing);
+        UpdateTotal(NewIngredient.Portions);
+        NewIngredient = new Ingredients();
+    }
+    //add the selected ingredient to the Database
+    private async Task AddToDatabase(Ingredients ing)
+    {
+        await MealService.AddToDatabaseAsync(ing);
+        IngredientsList = await MealService.UpdateIngredientsAsync();
+        await MealService.UpdateDatabaseAsync(ing);        
+        // NewIngredient = new Ingredients();
+    }
+
+    #endregion
+    #region Get ingredient
+    //Fetch the ingredientlist from the server
+    private async Task GetIngredients(string name)
+    {
+        IngredientsList = await MealService.GetIngredientsAsync(name);
+    }
+    #endregion
+    #region Buttons
+    //delete input from server List
+    private async Task btn_DeleteRecord()
+    {
+        if (IngredientsList.Count > 0)
+        {
+            await MealService.DeleteIngredientAsync(IngredientsList[Index].ProductName);
+            IngredientsList = await MealService.GetIngredientsAsync(NewIngredient.ProductName);
+        }
+
+        UpdateTotal(NewIngredient.Portions);
+    }
+    //Clear list
+    private async Task btn_EmptyRecord()
+    {
+        await MealService.EmptyRecordAsync();
+        IngredientsList = await MealService.GetIngredientsAsync(NewIngredient.ProductName);
+        UpdateTotal(0);
+    }
+    #endregion
+    #region set index
+    //Private Database
+    private void SetIndex(int index)
+    {
+        Index = index;
+        NewIngredient = IngredientsList[Index];
+    }
+    private string GetRowClass(int index)
+    {
+        return index == Index ? "selected-row" : string.Empty;
+    }
+    #endregion
+    #region Handle Inputs
+    private void HandleInputCalorie(ChangeEventArgs e)
+    {
+        if (float.TryParse(e.Value.ToString(), out float result))
+        {
+            NewCalorie = result;            
+        }
+    }
+    private void HandleInputAmount(ChangeEventArgs e)
+    {
+        if (float.TryParse(e.Value.ToString(), out float result))
+        {
+            NewAmount = result;
+        }
+    }
+    private void HandleInputPortion(ChangeEventArgs e)
+    {
+        if (int.TryParse(e.Value.ToString(), out int result))
+        {
+            NewPortion = result;
+        }
+    }
+    #endregion
+
+
+    #region Add To Newingredient
+    private async Task AddCalorie(KeyboardEventArgs e)
+    {
+        if (e.Key == "Enter")
+        {
+            if (NewCalorie.HasValue)
+            {
+                NewIngredient.EnergyKcal100g = NewCalorie;
+                await amountInput.FocusAsync();
+            }
+        }
+    }
+    private async Task AddAmount(KeyboardEventArgs e)
+    {
+        if (e.Key == "Enter")
+        {
+            NewIngredient.Amount = NewAmount;
+            //NewAmount = null;
+            await portionInput.FocusAsync();
+        }
+    }
+    private async Task AddPortion(KeyboardEventArgs e)
+    {
+        if (e.Key == "Enter")
+        {
+            NewIngredient.Portions = NewPortion;
+            if (NewIngredient.Amount.HasValue && NewIngredient.EnergyKcal100g.HasValue && NewIngredient.Portions.HasValue)
+            {
+                NewIngredient.PerPortion = (NewIngredient.Amount / 100) * NewIngredient.EnergyKcal100g / NewIngredient.Portions;
+            }
+            await AddIngredient(NewIngredient);
+            NewIngredientString = string.Empty;
+            NewCalorie = null;
+            NewAmount = null;
+        }
+    }
+    #endregion
+
+    #region Update Total
+    private void UpdateTotal(int? portions)
+    {
+        TotalCalories = TotalAmount = TotalPerPortion = 0;
+        foreach (Ingredients i in IngredientsList)
+        {
+            TotalCalories += i.EnergyKcal100g;
+            TotalAmount += i.Amount;
+            TotalPerPortion += i.PerPortion;
+        }
+        TotalPortion = portions;        
+    }
+    #endregion
+    #region Search Ingredient Database
+    private async Task Search(string SearchName)
+    {
+        if (SearchName != null)
+        {
+            var result = await OpenFoodFactsService.SearchProductAsync(SearchName);
+            foreach (var product in result.Products)
+            {
+                Ingredients ing = new Ingredients();
+                ing.Code = product.Code;
+                ing.ProductName = product.ProductName;
+                ing.Brands = product.Brands;
+                ing.Salt100g = product.Nutriments.Salt100g;
+                ing.Fat100g = product.Nutriments.Fat100g;
+                ing.Sugars100g = product.Nutriments.Sugars100g;
+                ing.Carbohydrates100g = product.Nutriments.Carbohydrates100g;
+                ing.EnergyKcal100g = product.Nutriments.EnergyKcal100g;
+                ing.Proteins100g = product.Nutriments.Proteins100g;
+                ing.Created = DateTime.Now;
+                FoundIngredients.Add(ing);
+                await AddToDatabase(ing);
+            }
+        }
+    }
+    #endregion
+}

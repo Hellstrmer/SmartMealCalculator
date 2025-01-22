@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./SmartMealCalculatorServer
+      dockerfile: Dockerfile
+    container_name: smartmealcalculatorServer
+    restart: unless-stopped
+    ports:
+      - "5099:80"
+    networks:
+      - myapp_network
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - TZ=Europe/Stockholm
+    volumes:
+      - ./SmartMealCalculatorServer/ingredients.db:/app/ingredients.db
+
+  frontend:
+    build:
+      context: ./SmartMealCalculator
+      dockerfile: Dockerfile
+    container_name: smartmealcalculator
+    restart: unless-stopped
+    ports:
+      - "5195:80"
+    networks:
+      - myapp_network
+    depends_on:
+      - backend
+    environment:
+      - API_BASE_URL=http://smartmealcalculatorServer:5099
+
+networks:
+  myapp_network:
+    driver: bridge

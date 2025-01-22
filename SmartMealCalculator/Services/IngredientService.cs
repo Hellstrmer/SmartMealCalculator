@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using Newtonsoft.Json;
+using System.Diagnostics;
 using System.Net.Http.Json;
 
 namespace SmartMealCalculator
@@ -15,7 +16,7 @@ namespace SmartMealCalculator
         {
             try
             {
-                var response = await _httpClient.GetFromJsonAsync<List<Ingredients>>("http://localhost:5099/api/Ingredients");
+                var response = await _httpClient.GetFromJsonAsync<List<Ingredients>>("api/Ingredients");
                 if (response == null)
                 {
                     throw new Exception("No data returned from API.");
@@ -24,20 +25,29 @@ namespace SmartMealCalculator
             }
             catch (Exception ex)
             {
-                // Log or handle the exception
-                Console.Error.WriteLine($"Error occurred: {ex.Message}");
+                Debug.WriteLine($"Error occurred: {ex.Message}");
                 return new List<Ingredients>();
             }
+        }       
+
+        public async Task AddIngredientAsync(Ingredients ingredient)
+        {
+            Debug.WriteLine($"Sending ingredient: {ingredient.ProductName} - {ingredient.EnergyKcal100g} kcal");
+            await _httpClient.PostAsJsonAsync("api/Ingredients/AddIngredient", ingredient);   
         }
 
-        /*public async Task<List<Ingredients>> GetIngredientsAsync()
+        public async Task DeleteIngredientAsync(string name)
         {
-            return await _httpClient.GetFromJsonAsync<List<Ingredients>>("http://localhost:5195/api/Ingredients");
-        }*/
-        public async Task AddIngredientAsync(Ingredients ingredient)
-        {            
-            Debug.WriteLine($"Sending ingredient: {ingredient.Name} - {ingredient.Calories} kcal");
-            await _httpClient.PostAsJsonAsync("http://localhost:5099/api/Ingredients", ingredient);
+            var response = await _httpClient.PostAsJsonAsync("api/Ingredients/DeleteIngredient", name);
+
+            if (response.IsSuccessStatusCode)
+            {
+                Debug.WriteLine("Deleted!");
+            }
+            else
+            {
+                Debug.WriteLine("Delete Failed.");
+            }
         }
 
     }
