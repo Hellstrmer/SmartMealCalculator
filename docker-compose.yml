@@ -1,3 +1,20 @@
+# version: '3.8'
+
+# services:
+#   backend:
+#     build:
+#       context: ./SmartMealCalculatorServer
+#       dockerfile: Dockerfile
+#     container_name: smartmealcalculatorServer
+#     restart: unless-stopped
+#     ports:
+#       - "5099:80"
+#     networks:
+#       - myapp_network
+#     environment:
+#       - ASPNETCORE_ENVIRONMENT=Production
+#     volumes:
+#       - /data/compose/1/SmartMealCalculatorServer:/app/data
 version: '3.8'
 
 services:
@@ -5,6 +22,8 @@ services:
     build:
       context: ./SmartMealCalculatorServer
       dockerfile: Dockerfile
+      args: # Add build arguments here
+        BUILD_CONFIGURATION: ${BUILD_CONFIGURATION:-Release} # Default to Release
     container_name: smartmealcalculatorServer
     restart: unless-stopped
     ports:
@@ -12,9 +31,10 @@ services:
     networks:
       - myapp_network
     environment:
-      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_ENVIRONMENT=${BUILD_CONFIGURATION:-Release} # Consistent with build
     volumes:
       - /data/compose/1/SmartMealCalculatorServer:/app/data
+
 
   frontend:
     build:
