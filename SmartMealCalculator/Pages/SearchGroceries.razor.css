@@ -196,3 +196,46 @@ div.active-ingredient-row {
 .selected-row {
     background-color: rgba(255,255,255,0.1);
 }
+
+@media (max-width: 768px) {
+    .add-ing {
+        flex-direction: column;
+        gap: 5px;
+        padding: 8px;
+        font-size: 0.8rem;
+    }
+
+        .add-ing input, .add-ing ::deep .blazored-typeahead__input {
+            width: 100%;
+            font-size: 14px;
+            padding: 6px 10px;
+        }
+
+        .add-ing button {
+            width: 100%;
+            padding: 8px;
+        }
+
+    .ingredient-row, .active-ingredient-row {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 8px;
+    }
+
+        .ingredient-row span, .active-ingredient-row span {
+            width: 100%;
+            text-align: left;
+        }
+
+            .ingredient-row span:last-child, .active-ingredient-row span:last-child {
+                text-align: left;
+            }
+
+    .blazored-typeahead {
+        width: 100%;
+    }
+
+    ::deep .blazored-typeahead__results {
+        width: 100%;
+    }
+}

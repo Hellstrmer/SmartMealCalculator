@@ -4,18 +4,6 @@
     margin-left: 10px;
     cursor: wait;
 }
-/*@keyframes spin {
-    0% {
-        transform: rotate(0deg)
-    }
-
-    100% {
-        transform: rotate(360deg)
-    }
-}*/*/
-/*body.loading {
-    cursor: wait !important;
-}*/
 .add-ing {
     display: flex;
     flex-direction: row;
@@ -65,13 +53,11 @@
     }
     .add-ing ::deep .blazored-typeahead {
         width: 40%;
-        /*height: 40%;*/
     }
 
     .add-ing ::deep .blazored-typeahead__input {
         width: 40%;
-        background: #2C2F33;/*
-        border: 1px solid #444952;*/
+        background: #2C2F33;
         border-radius: 8px;
         color: #ecf0f1;
         padding: 0px 0px;
@@ -202,4 +188,47 @@ div.active-ingredient-row {
 }
 .selected-row {
     background-color: rgba(255,255,255,0.1);
+}
+
+@media (max-width: 768px) {
+    .add-ing {
+        flex-direction: column;
+        gap: 5px;
+        padding: 8px;
+        font-size: 0.8rem;
+    }
+
+        .add-ing input, .add-ing ::deep .blazored-typeahead__input {
+            width: 100%;
+            font-size: 14px;
+            padding: 6px 10px;
+        }
+
+        .add-ing button {
+            width: 100%;
+            padding: 8px;
+        }
+
+    .ingredient-row, .active-ingredient-row {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 8px;
+    }
+
+        .ingredient-row span, .active-ingredient-row span {
+            width: 100%;
+            text-align: left;
+        }
+            .ingredient-row span:last-child, .active-ingredient-row span:last-child {
+                text-align: left;
+            }
+
+    .blazored-typeahead {
+        width: 100%;
+    }
+
+    ::deep .blazored-typeahead__results {
+        width: 100%;
+    }
+
 }
