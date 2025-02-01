@@ -1,4 +1,4 @@
-@SmartMealCalculatorServer_HostAddress = http://localhost:5099
+@SmartMealCalculatorServer_HostAddress = http://192.168.50.51:5099
 
 GET {{SmartMealCalculatorServer_HostAddress}}/weatherforecast/
 Accept: application/json
