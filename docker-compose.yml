@@ -13,7 +13,6 @@ services:
       - myapp_network
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
-      - TZ=Europe/Stockholm
     volumes:
       - /data/compose/1/SmartMealCalculatorServer:/app/data
 
