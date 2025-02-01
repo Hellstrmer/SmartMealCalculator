@@ -9,13 +9,15 @@ builder.Services.AddDbContext<IngredientsDbContext>(options =>
 //CORS
 builder.Services.AddCors(options =>
 {
-    options.AddDefaultPolicy(policy =>
+    options.AddPolicy("AllowAll", policy =>
     {
-        policy.AllowAnyOrigin()/*WithOrigins("http://smartmealcalculator:5195")*/
-              .AllowAnyHeader()
-              .AllowAnyMethod();
+        policy.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader();
     });
 });
+
+
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -37,7 +39,7 @@ app.UseSwaggerUI();
 /*
 app.UseHttpsRedirection();*/
 
-app.UseCors();
+app.UseCors("AllowAll");
 /*app.UseAuthorization();*/
 
 app.MapControllers();
