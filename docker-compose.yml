@@ -30,7 +30,7 @@ services:
     depends_on:
       - backend
     environment:
-      - API_BASE_URL=http://smartmealcalculatorServer:5099
+      - API_BASE_URL=http://smartmealcalculatorServer:80
 
 networks:
   myapp_network:
