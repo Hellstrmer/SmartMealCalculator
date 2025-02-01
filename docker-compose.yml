@@ -8,12 +8,13 @@ services:
     container_name: smartmealcalculatorServer
     restart: unless-stopped
     ports:
-      - "5099:80"  # Mappar containerns port 80 till värdens port 5099
+      - "5099:80"
     networks:
       - myapp_network
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
-      - TZ=Europe/Stockholm
+    volumes:
+      - /data/compose/1/SmartMealCalculatorServer:/app/data
 
   frontend:
     build:
@@ -22,7 +23,7 @@ services:
     container_name: smartmealcalculator
     restart: unless-stopped
     ports:
-      - "5195:80"  # Mappar containerns port 80 till värdens port 5195
+      - "5195:80"
     networks:
       - myapp_network
     depends_on:
@@ -32,5 +33,4 @@ services:
 
 networks:
   myapp_network:
-    name: myapp_network
     driver: bridge
