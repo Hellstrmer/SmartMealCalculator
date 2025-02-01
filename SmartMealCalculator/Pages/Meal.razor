@@ -87,6 +87,8 @@
 </div>
 
 @code {
+    
+
     private BlazoredTypeahead<Ingredients, Ingredients> typeaheadRef;
     private List<Ingredients> IngredientsList = new List<Ingredients>();
     private Ingredients NewIngredient = new Ingredients();
@@ -114,6 +116,7 @@
     //Requests
     protected override async Task OnInitializedAsync()
     {
+        Console.WriteLine("Meal");
         IngredientsList = await MealService.UpdateIngredientsAsync();
     }
     #region Searchbox    
