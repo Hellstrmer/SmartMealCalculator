@@ -15,7 +15,6 @@
 #       - ASPNETCORE_ENVIRONMENT=Production
 #     volumes:
 #       - /data/compose/1/SmartMealCalculatorServer:/app/data
-version: '3.8'
 
 services:
   backend:
@@ -53,4 +52,5 @@ services:
 
 networks:
   myapp_network:
-    driver: bridge
+    name: myapp_network
+    external: true  # Använd det befintliga nätverket
