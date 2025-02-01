@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using SmartMealCalculator;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
+Console.WriteLine("Hello from Blazor!"); // <-- Try this
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 Console.WriteLine("Blazor-appen startar...");
