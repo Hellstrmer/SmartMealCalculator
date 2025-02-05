@@ -21,7 +21,7 @@ RUN dotnet restore
 
 COPY . .
 
-RUN dotnet publish -c ${BUILD_CONFIGURATION} -o /app/publish /p:PublishReadyToRun=true  # Use build argument and PublishReadyToRun
+RUN dotnet publish "SmartMealCalculatorServer.csproj" -c Release -o /app/publish
 
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
 WORKDIR /app
