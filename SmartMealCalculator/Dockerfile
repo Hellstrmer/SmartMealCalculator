@@ -20,9 +20,11 @@ RUN dotnet build "SmartMealCalculator/SmartMealCalculator.csproj" -c Release -o 
 # Publish the project
 FROM build AS publish
 RUN dotnet publish "SmartMealCalculator/SmartMealCalculator.csproj" -c Release -o /app/publish
+RUN ls -la /app/publish
 
 # Final stage
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+RUN ls -la
 ENTRYPOINT ["dotnet", "SmartMealCalculator.dll"]
