@@ -1,28 +1,10 @@
-# version: '3.8'
-
-# services:
-#   backend:
-#     build:
-#       context: ./SmartMealCalculatorServer
-#       dockerfile: Dockerfile
-#     container_name: smartmealcalculatorServer
-#     restart: unless-stopped
-#     ports:
-#       - "5099:80"
-#     networks:
-#       - myapp_network
-#     environment:
-#       - ASPNETCORE_ENVIRONMENT=Production
-#     volumes:
-#       - /data/compose/1/SmartMealCalculatorServer:/app/data
-
 services:
   backend:
     build:
-      context: ./SmartMealCalculatorServer
-      dockerfile: Dockerfile
-      args: # Add build arguments here
-        BUILD_CONFIGURATION: ${BUILD_CONFIGURATION:-Release} # Default to Release
+      context: https://github.com/Hellstrmer/SmartMealCalculator.git#main
+      dockerfile: SmartMealCalculatorServer/Dockerfile
+      args:
+        BUILD_CONFIGURATION: ${BUILD_CONFIGURATION:-Release}
     container_name: smartmealcalculatorServer
     restart: unless-stopped
     ports:
@@ -30,15 +12,14 @@ services:
     networks:
       - myapp_network
     environment:
-      - ASPNETCORE_ENVIRONMENT=${BUILD_CONFIGURATION:-Release} # Consistent with build
+      - ASPNETCORE_ENVIRONMENT=Release}
     volumes:
-      - /data/compose/1/SmartMealCalculatorServer:/app/data
-
+      - /data/compose/10/SmartMealCalculatorServer:/app/data
 
   frontend:
     build:
-      context: ./SmartMealCalculator
-      dockerfile: Dockerfile
+      context: https://github.com/Hellstrmer/SmartMealCalculator.git#main
+      dockerfile: SmartMealCalculator/Dockerfile
     container_name: smartmealcalculator
     restart: unless-stopped
     ports:
@@ -53,4 +34,4 @@ services:
 networks:
   myapp_network:
     name: myapp_network
-    external: true  # Använd det befintliga nätverket
+    external: true

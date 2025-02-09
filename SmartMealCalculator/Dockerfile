@@ -4,9 +4,9 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
-COPY ["SmartMealCalculator.csproj", "./"]
+COPY ["SmartMealCalculator/SmartMealCalculator.csproj", "./"]
 RUN dotnet restore "SmartMealCalculator.csproj"
-COPY . .
+COPY SmartMealCalculator/ .
 RUN dotnet build "SmartMealCalculator.csproj" -c Release -o /app/build
 
 FROM build AS publish
