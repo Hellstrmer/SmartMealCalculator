@@ -14,10 +14,10 @@ WORKDIR /src
 ## Copy the rest of the source code
 #COPY SmartMealCalculator/ ./SmartMealCalculator/
 
-COPY ["SmartMealCalculator.csproj", "./"]
+COPY ["SmartMealCalculator/SmartMealCalculator.csproj", "./"]
 RUN dotnet restore "SmartMealCalculator.csproj" --verbosity detailed
 
-COPY . .
+COPY SmartMealCalculator/ ./SmartMealCalculator/
 
 # Build the project
 RUN dotnet build "SmartMealCalculator.csproj" -c Release -o /app/build --verbosity detailed
