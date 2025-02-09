@@ -14,5 +14,5 @@ RUN dotnet publish "SmartMealCalculatorServer.csproj" -c Release -o /app/publish
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
 WORKDIR /app
 COPY --from=build /app/publish .
-ENV ASPNETCORE_ENVIRONMENT=${BUILD_CONFIGURATION}
+ENV ASPNETCORE_ENVIRONMENT=Release
 ENTRYPOINT ["dotnet", "SmartMealCalculatorServer.dll"]
