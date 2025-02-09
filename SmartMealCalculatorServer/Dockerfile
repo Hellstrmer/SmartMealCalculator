@@ -51,5 +51,5 @@ RUN ls -la /app/publish  # Kontrollera utdata
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-RUN ls -la  # Kontrollera innehållet i /app
+RUN ls -la  
 ENTRYPOINT ["dotnet", "SmartMealCalculatorServer.dll"]
