@@ -12,7 +12,7 @@ services:
     networks:
       - myapp_network
     environment:
-      - ASPNETCORE_ENVIRONMENT=Release}
+      - ASPNETCORE_ENVIRONMENT=Release
     volumes:
       - /data/compose/10/SmartMealCalculatorServer:/app/data
 

@@ -8,7 +8,6 @@ COPY ["SmartMealCalculator/SmartMealCalculator.csproj", "./"]
 RUN dotnet restore "SmartMealCalculator.csproj"
 COPY SmartMealCalculator/ .
 RUN dotnet build "SmartMealCalculator.csproj" -c Release -o /app/build
-RUN ls -la /app/build
 
 FROM build AS publish
 RUN dotnet publish "SmartMealCalculator.csproj" -c Release -o /app/publish
