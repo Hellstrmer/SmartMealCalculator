@@ -11,10 +11,10 @@
 #       - "5099:80"
 #     networks:
 #       - myapp_network
-#     environment:
-#       - ASPNETCORE_ENVIRONMENT=Release
-#     volumes:
-#       - /data/compose/10/SmartMealCalculatorServer:/app/data
+    # environment:
+    #   - ASPNETCORE_ENVIRONMENT=Release
+    # volumes:
+    #   - /data/compose/10/SmartMealCalculatorServer:/app/data
 
 #   frontend:
 #     build:
@@ -48,6 +48,10 @@ services:
       - "5099:80"
     networks:
       - myapp_network
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Release
+    volumes:
+      - /data/compose/10/SmartMealCalculatorServer:/app/data
 
   frontend:
     build:
