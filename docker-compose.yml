@@ -50,8 +50,9 @@ services:
       - myapp_network
     environment:
       - ASPNETCORE_ENVIRONMENT=Release
+      - TZ=Europe/Stockholm
     volumes:
-      - /data/compose/10/SmartMealCalculatorServer:/app/data
+      - /data/compose/1/SmartMealCalculatorServer/ingredients.db:/app/ingredients.db
 
   frontend:
     build:
