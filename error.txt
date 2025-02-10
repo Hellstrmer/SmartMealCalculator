@@ -1,0 +1,650 @@
+C:\Program Files\dotnet\sdk\8.0.404\Current\SolutionFile\ImportAfter\Microsoft.NET.Sdk.Solution.targets(36,5): warning
+NETSDK1194: The "--output" option isn't supported when building a solution. Specifying a solution-level output path res
+ults in all projects copying outputs to the same directory, which can lead to inconsistent builds. [C:\Users\jespe\Sour
+ce\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator.sln]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\OpenFoodFacts\Models\Adjustments.c
+s(11,26): warning CS8618: Non-nullable property 'Packaging' must contain a non-null value when exiting constructor. Con
+sider adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\Sma
+rtMealCalculator\SmartMealCalculatorServer\SmartMealCalculatorServer.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\OpenFoodFacts\Models\Ingredient.cs
+(10,23): warning CS8618: Non-nullable property 'FromPalmOil' must contain a non-null value when exiting constructor. Co
+nsider adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\Sm
+artMealCalculator\SmartMealCalculatorServer\SmartMealCalculatorServer.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\OpenFoodFacts\Models\Ingredient.cs
+(12,23): warning CS8618: Non-nullable property 'Id' must contain a non-null value when exiting constructor. Consider ad
+ding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCa
+lculator\SmartMealCalculatorServer\SmartMealCalculatorServer.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\OpenFoodFacts\Models\Ingredient.cs
+(14,23): warning CS8618: Non-nullable property 'Origin' must contain a non-null value when exiting constructor. Conside
+r adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMe
+alCalculator\SmartMealCalculatorServer\SmartMealCalculatorServer.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\OpenFoodFacts\Models\Ingredient.cs
+(16,23): warning CS8618: Non-nullable property 'Percent' must contain a non-null value when exiting constructor. Consid
+er adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartM
+ealCalculator\SmartMealCalculatorServer\SmartMealCalculatorServer.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\OpenFoodFacts\Models\Ingredient.cs
+(20,23): warning CS8618: Non-nullable property 'Text' must contain a non-null value when exiting constructor. Consider
+adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMeal
+Calculator\SmartMealCalculatorServer\SmartMealCalculatorServer.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\OpenFoodFacts\Models\Ingredient.cs
+(22,23): warning CS8618: Non-nullable property 'Vegan' must contain a non-null value when exiting constructor. Consider
+ adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMea
+lCalculator\SmartMealCalculatorServer\SmartMealCalculatorServer.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\OpenFoodFacts\Models\Ingredient.cs
+(24,23): warning CS8618: Non-nullable property 'Vegetarian' must contain a non-null value when exiting constructor. Con
+sider adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\Sma
+rtMealCalculator\SmartMealCalculatorServer\SmartMealCalculatorServer.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\OpenFoodFacts\Models\EcoscoreData.
+cs(11,28): warning CS8618: Non-nullable property 'Adjustments' must contain a non-null value when exiting constructor.
+Consider adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\
+SmartMealCalculator\SmartMealCalculatorServer\SmartMealCalculatorServer.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\OpenFoodFacts\Models\LanguagesCode
+s.cs(6,23): warning CS8618: Non-nullable property 'En' must contain a non-null value when exiting constructor. Consider
+ adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMea
+lCalculator\SmartMealCalculatorServer\SmartMealCalculatorServer.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\OpenFoodFacts\Models\LanguagesCode
+s.cs(8,23): warning CS8618: Non-nullable property 'Fr' must contain a non-null value when exiting constructor. Consider
+ adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMea
+lCalculator\SmartMealCalculatorServer\SmartMealCalculatorServer.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\OpenFoodFacts\Models\LanguagesCode
+s.cs(10,23): warning CS8618: Non-nullable property 'Pl' must contain a non-null value when exiting constructor. Conside
+r adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMe
+alCalculator\SmartMealCalculatorServer\SmartMealCalculatorServer.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\OpenFoodFacts\Models\NutrientLevel
+s.cs(9,23): warning CS8618: Non-nullable property 'Fat' must contain a non-null value when exiting constructor. Conside
+r adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMe
+alCalculator\SmartMealCalculatorServer\SmartMealCalculatorServer.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\OpenFoodFacts\Models\NutrientLevel
+s.cs(11,23): warning CS8618: Non-nullable property 'Salt' must contain a non-null value when exiting constructor. Consi
+der adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\Smart
+MealCalculator\SmartMealCalculatorServer\SmartMealCalculatorServer.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\OpenFoodFacts\Models\NutrientLevel
+s.cs(14,23): warning CS8618: Non-nullable property 'SaturatedFat' must contain a non-null value when exiting constructo
+r. Consider adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrm
+er\SmartMealCalculator\SmartMealCalculatorServer\SmartMealCalculatorServer.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\OpenFoodFacts\Models\NutrientLevel
+s.cs(16,23): warning CS8618: Non-nullable property 'Sugars' must contain a non-null value when exiting constructor. Con
+sider adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\Sma
+rtMealCalculator\SmartMealCalculatorServer\SmartMealCalculatorServer.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\OpenFoodFacts\Models\Packaging.cs(
+14,23): warning CS8618: Non-nullable property 'NonRecyclableAndNonBiodegradableMaterials' must contain a non-null value
+ when exiting constructor. Consider adding the 'required' modifier or declaring the property as nullable. [C:\Users\jes
+pe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\SmartMealCalculatorServer.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\OpenFoodFacts\Models\Packaging.cs(
+17,29): warning CS8618: Non-nullable property 'Packagings' must contain a non-null value when exiting constructor. Cons
+ider adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\Smar
+tMealCalculator\SmartMealCalculatorServer\SmartMealCalculatorServer.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\OpenFoodFacts\Models\Packaging.cs(
+27,23): warning CS8618: Non-nullable property 'Material' must contain a non-null value when exiting constructor. Consid
+er adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartM
+ealCalculator\SmartMealCalculatorServer\SmartMealCalculatorServer.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\OpenFoodFacts\Models\Packaging.cs(
+29,23): warning CS8618: Non-nullable property 'MaterialShape' must contain a non-null value when exiting constructor. C
+onsider adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\S
+martMealCalculator\SmartMealCalculatorServer\SmartMealCalculatorServer.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\OpenFoodFacts\Models\Packaging.cs(
+31,23): warning CS8618: Non-nullable property 'NonRecyclableAndNonBiodegradable' must contain a non-null value when exi
+ting constructor. Consider adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source
+\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\SmartMealCalculatorServer.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\OpenFoodFacts\Models\Packaging.cs(
+33,23): warning CS8618: Non-nullable property 'Shape' must contain a non-null value when exiting constructor. Consider
+adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMeal
+Calculator\SmartMealCalculatorServer\SmartMealCalculatorServer.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\Helpers\Ingredients.cs(14,23): war
+ning CS8618: Non-nullable property 'Brands' must contain a non-null value when exiting constructor. Consider adding the
+ 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator
+\SmartMealCalculatorServer\SmartMealCalculatorServer.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\OpenFoodFacts\Models\SearchResult.
+cs(8,30): warning CS8618: Non-nullable property 'Products' must contain a non-null value when exiting constructor. Cons
+ider adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\Smar
+tMealCalculator\SmartMealCalculatorServer\SmartMealCalculatorServer.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\OpenFoodFacts\Models\ProductRespon
+se.cs(8,24): warning CS8618: Non-nullable property 'Product' must contain a non-null value when exiting constructor. Co
+nsider adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\Sm
+artMealCalculator\SmartMealCalculatorServer\SmartMealCalculatorServer.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\OpenFoodFacts\Models\ProductRespon
+se.cs(10,23): warning CS8618: Non-nullable property 'Code' must contain a non-null value when exiting constructor. Cons
+ider adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\Smar
+tMealCalculator\SmartMealCalculatorServer\SmartMealCalculatorServer.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\OpenFoodFacts\Models\ProductRespon
+se.cs(15,23): warning CS8618: Non-nullable property 'StatusVerbose' must contain a non-null value when exiting construc
+tor. Consider adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellst
+rmer\SmartMealCalculator\SmartMealCalculatorServer\SmartMealCalculatorServer.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\OpenFoodFacts\Models\SelectedImage
+.cs(6,34): warning CS8618: Non-nullable property 'Display' must contain a non-null value when exiting constructor. Cons
+ider adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\Smar
+tMealCalculator\SmartMealCalculatorServer\SmartMealCalculatorServer.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\OpenFoodFacts\Models\SelectedImage
+.cs(8,34): warning CS8618: Non-nullable property 'Small' must contain a non-null value when exiting constructor. Consid
+er adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartM
+ealCalculator\SmartMealCalculatorServer\SmartMealCalculatorServer.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\OpenFoodFacts\Models\SelectedImage
+.cs(10,34): warning CS8618: Non-nullable property 'Thumb' must contain a non-null value when exiting constructor. Consi
+der adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\Smart
+MealCalculator\SmartMealCalculatorServer\SmartMealCalculatorServer.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\OpenFoodFacts\Models\Product.cs(11
+,31): warning CS8618: Non-nullable property 'LanguagesCodes' must contain a non-null value when exiting constructor. Co
+nsider adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\Sm
+artMealCalculator\SmartMealCalculatorServer\SmartMealCalculatorServer.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\OpenFoodFacts\Models\Product.cs(14
+,27): warning CS8618: Non-nullable property 'Nutriments' must contain a non-null value when exiting constructor. Consid
+er adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartM
+ealCalculator\SmartMealCalculatorServer\SmartMealCalculatorServer.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\OpenFoodFacts\Models\Product.cs(15
+,23): warning CS8618: Non-nullable property 'Brands' must contain a non-null value when exiting constructor. Consider a
+dding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealC
+alculator\SmartMealCalculatorServer\SmartMealCalculatorServer.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\OpenFoodFacts\Models\Product.cs(18
+,25): warning CS8618: Non-nullable property 'BrandsDebugTags' must contain a non-null value when exiting constructor. C
+onsider adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\S
+martMealCalculator\SmartMealCalculatorServer\SmartMealCalculatorServer.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\OpenFoodFacts\Models\Product.cs(21
+,25): warning CS8618: Non-nullable property 'BrandsTags' must contain a non-null value when exiting constructor. Consid
+er adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartM
+ealCalculator\SmartMealCalculatorServer\SmartMealCalculatorServer.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\OpenFoodFacts\Models\Product.cs(24
+,25): warning CS8618: Non-nullable property 'CountriesHierarchy' must contain a non-null value when exiting constructor
+. Consider adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrme
+r\SmartMealCalculator\SmartMealCalculatorServer\SmartMealCalculatorServer.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\OpenFoodFacts\Models\Product.cs(27
+,23): warning CS8618: Non-nullable property 'CountriesLc' must contain a non-null value when exiting constructor. Consi
+der adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\Smart
+MealCalculator\SmartMealCalculatorServer\SmartMealCalculatorServer.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\OpenFoodFacts\Models\Product.cs(30
+,25): warning CS8618: Non-nullable property 'CountriesDebugTags' must contain a non-null value when exiting constructor
+. Consider adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrme
+r\SmartMealCalculator\SmartMealCalculatorServer\SmartMealCalculatorServer.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\OpenFoodFacts\Models\Product.cs(33
+,25): warning CS8618: Non-nullable property 'CountriesTags' must contain a non-null value when exiting constructor. Con
+sider adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\Sma
+rtMealCalculator\SmartMealCalculatorServer\SmartMealCalculatorServer.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\OpenFoodFacts\Models\Product.cs(36
+,25): warning CS8618: Non-nullable property 'CorrectorsTags' must contain a non-null value when exiting constructor. Co
+nsider adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\Sm
+artMealCalculator\SmartMealCalculatorServer\SmartMealCalculatorServer.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\OpenFoodFacts\Models\Product.cs(39
+,23): warning CS8618: Non-nullable property 'ProductName' must contain a non-null value when exiting constructor. Consi
+der adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\Smart
+MealCalculator\SmartMealCalculatorServer\SmartMealCalculatorServer.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\OpenFoodFacts\Models\SelectedImage
+s.cs(6,30): warning CS8618: Non-nullable property 'Front' must contain a non-null value when exiting constructor. Consi
+der adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\Smart
+MealCalculator\SmartMealCalculatorServer\SmartMealCalculatorServer.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\OpenFoodFacts\Models\SelectedImage
+s.cs(8,30): warning CS8618: Non-nullable property 'Ingredients' must contain a non-null value when exiting constructor.
+ Consider adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer
+\SmartMealCalculator\SmartMealCalculatorServer\SmartMealCalculatorServer.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\OpenFoodFacts\Models\SelectedImage
+s.cs(10,30): warning CS8618: Non-nullable property 'Nutrition' must contain a non-null value when exiting constructor.
+Consider adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\
+SmartMealCalculator\SmartMealCalculatorServer\SmartMealCalculatorServer.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\OpenFoodFacts\Models\Nutriments.cs
+(19,23): warning CS8618: Non-nullable property 'SaltUnit' must contain a non-null value when exiting constructor. Consi
+der adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\Smart
+MealCalculator\SmartMealCalculatorServer\SmartMealCalculatorServer.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\OpenFoodFacts\Models\Nutriments.cs
+(31,23): warning CS8618: Non-nullable property 'FatUnit' must contain a non-null value when exiting constructor. Consid
+er adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartM
+ealCalculator\SmartMealCalculatorServer\SmartMealCalculatorServer.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\OpenFoodFacts\Models\Nutriments.cs
+(43,23): warning CS8618: Non-nullable property 'SaturatedFatUnit' must contain a non-null value when exiting constructo
+r. Consider adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrm
+er\SmartMealCalculator\SmartMealCalculatorServer\SmartMealCalculatorServer.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\OpenFoodFacts\Models\Nutriments.cs
+(55,23): warning CS8618: Non-nullable property 'SugarsUnit' must contain a non-null value when exiting constructor. Con
+sider adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\Sma
+rtMealCalculator\SmartMealCalculatorServer\SmartMealCalculatorServer.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\OpenFoodFacts\Models\Nutriments.cs
+(67,23): warning CS8618: Non-nullable property 'CarbohydratesUnit' must contain a non-null value when exiting construct
+or. Consider adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstr
+mer\SmartMealCalculator\SmartMealCalculatorServer\SmartMealCalculatorServer.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\OpenFoodFacts\Models\Nutriments.cs
+(76,23): warning CS8618: Non-nullable property 'EnergyKcalUnit' must contain a non-null value when exiting constructor.
+ Consider adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer
+\SmartMealCalculator\SmartMealCalculatorServer\SmartMealCalculatorServer.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\OpenFoodFacts\Models\Nutriments.cs
+(88,23): warning CS8618: Non-nullable property 'ProteinsUnit' must contain a non-null value when exiting constructor. C
+onsider adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\S
+martMealCalculator\SmartMealCalculatorServer\SmartMealCalculatorServer.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\OpenFoodFacts\Models\Source.cs(10,
+23): warning CS8618: Non-nullable property 'Id' must contain a non-null value when exiting constructor. Consider adding
+ the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalcul
+ator\SmartMealCalculatorServer\SmartMealCalculatorServer.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\OpenFoodFacts\Models\Source.cs(17,
+23): warning CS8618: Non-nullable property 'Manufacturer' must contain a non-null value when exiting constructor. Consi
+der adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\Smart
+MealCalculator\SmartMealCalculatorServer\SmartMealCalculatorServer.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\OpenFoodFacts\Models\Source.cs(19,
+23): warning CS8618: Non-nullable property 'Name' must contain a non-null value when exiting constructor. Consider addi
+ng the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalc
+ulator\SmartMealCalculatorServer\SmartMealCalculatorServer.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\OpenFoodFacts\Models\Source.cs(21,
+23): warning CS8618: Non-nullable property 'Url' must contain a non-null value when exiting constructor. Consider addin
+g the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalcu
+lator\SmartMealCalculatorServer\SmartMealCalculatorServer.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\OpenFoodFacts\Models\SelectedImage
+Item.cs(5,23): warning CS8618: Non-nullable property 'En' must contain a non-null value when exiting constructor. Consi
+der adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\Smart
+MealCalculator\SmartMealCalculatorServer\SmartMealCalculatorServer.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\OpenFoodFacts\Models\SelectedImage
+Item.cs(7,23): warning CS8618: Non-nullable property 'Fr' must contain a non-null value when exiting constructor. Consi
+der adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\Smart
+MealCalculator\SmartMealCalculatorServer\SmartMealCalculatorServer.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\OpenFoodFacts\Models\SelectedImage
+Item.cs(9,23): warning CS8618: Non-nullable property 'Pl' must contain a non-null value when exiting constructor. Consi
+der adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\Smart
+MealCalculator\SmartMealCalculatorServer\SmartMealCalculatorServer.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\Controllers\MealController.cs(29,1
+3): warning CS8602: Dereference of a possibly null reference. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculat
+or\SmartMealCalculatorServer\SmartMealCalculatorServer.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\Controllers\MealController.cs(45,4
+2): warning CS1998: This async method lacks 'await' operators and will run synchronously. Consider using the 'await' op
+erator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread. [C:\Users
+\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\SmartMealCalculatorServer.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\Controllers\MealController.cs(60,2
+1): warning CS8602: Dereference of a possibly null reference. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculat
+or\SmartMealCalculatorServer\SmartMealCalculatorServer.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\Controllers\MealController.cs(51,4
+2): warning CS1998: This async method lacks 'await' operators and will run synchronously. Consider using the 'await' op
+erator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread. [C:\Users
+\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\SmartMealCalculatorServer.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\Controllers\MealController.cs(98,2
+1): warning CS8602: Dereference of a possibly null reference. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculat
+or\SmartMealCalculatorServer\SmartMealCalculatorServer.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\Controllers\MealController.cs(93,4
+2): warning CS1998: This async method lacks 'await' operators and will run synchronously. Consider using the 'await' op
+erator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread. [C:\Users
+\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\SmartMealCalculatorServer.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\Controllers\MealController.cs(114,
+42): warning CS1998: This async method lacks 'await' operators and will run synchronously. Consider using the 'await' o
+perator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread. [C:\User
+s\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\SmartMealCalculatorServer.csproj]
+C:\Program Files\dotnet\sdk\8.0.404\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.targets(284,5): warning NETSDK1206
+: Found version-specific or distribution-specific runtime identifier(s): win7-x64, win7-x86. Affected libraries: SQLite
+. In .NET 8.0 and higher, assets for version-specific and distribution-specific runtime identifiers will not be found b
+y default. See https://aka.ms/dotnet/rid-usage for details. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator
+\SmartMealCalculatorServer\SmartMealCalculatorServer.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\OpenFoodFacts\Models\Adjustments.cs(11,2
+6): warning CS8618: Non-nullable property 'Packaging' must contain a non-null value when exiting constructor. Consider
+adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMeal
+Calculator\SmartMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\OpenFoodFacts\Models\EcoscoreData.cs(11,
+28): warning CS8618: Non-nullable property 'Adjustments' must contain a non-null value when exiting constructor. Consid
+er adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartM
+ealCalculator\SmartMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\OpenFoodFacts\Models\NutrientLevels.cs(9
+,23): warning CS8618: Non-nullable property 'Fat' must contain a non-null value when exiting constructor. Consider addi
+ng the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalc
+ulator\SmartMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\OpenFoodFacts\Models\NutrientLevels.cs(1
+1,23): warning CS8618: Non-nullable property 'Salt' must contain a non-null value when exiting constructor. Consider ad
+ding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCa
+lculator\SmartMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\OpenFoodFacts\Models\NutrientLevels.cs(1
+4,23): warning CS8618: Non-nullable property 'SaturatedFat' must contain a non-null value when exiting constructor. Con
+sider adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\Sma
+rtMealCalculator\SmartMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\OpenFoodFacts\Models\NutrientLevels.cs(1
+6,23): warning CS8618: Non-nullable property 'Sugars' must contain a non-null value when exiting constructor. Consider
+adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMeal
+Calculator\SmartMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\Helpers\Ingredients.cs(14,23): warning C
+S8618: Non-nullable property 'Brands' must contain a non-null value when exiting constructor. Consider adding the 'requ
+ired' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\Smart
+MealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\OpenFoodFacts\Models\Packaging.cs(27,23)
+: warning CS8618: Non-nullable property 'Material' must contain a non-null value when exiting constructor. Consider add
+ing the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCal
+culator\SmartMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\OpenFoodFacts\Models\Packaging.cs(29,23)
+: warning CS8618: Non-nullable property 'MaterialShape' must contain a non-null value when exiting constructor. Conside
+r adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMe
+alCalculator\SmartMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\OpenFoodFacts\Models\Packaging.cs(31,23)
+: warning CS8618: Non-nullable property 'NonRecyclableAndNonBiodegradable' must contain a non-null value when exiting c
+onstructor. Consider adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos
+\Hellstrmer\SmartMealCalculator\SmartMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\OpenFoodFacts\Models\Packaging.cs(33,23)
+: warning CS8618: Non-nullable property 'Shape' must contain a non-null value when exiting constructor. Consider adding
+ the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalcul
+ator\SmartMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\OpenFoodFacts\Models\Source.cs(10,23): w
+arning CS8618: Non-nullable property 'Id' must contain a non-null value when exiting constructor. Consider adding the '
+required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\S
+martMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\OpenFoodFacts\Models\Source.cs(17,23): w
+arning CS8618: Non-nullable property 'Manufacturer' must contain a non-null value when exiting constructor. Consider ad
+ding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCa
+lculator\SmartMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\OpenFoodFacts\Models\Source.cs(19,23): w
+arning CS8618: Non-nullable property 'Name' must contain a non-null value when exiting constructor. Consider adding the
+ 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator
+\SmartMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\OpenFoodFacts\Models\Source.cs(21,23): w
+arning CS8618: Non-nullable property 'Url' must contain a non-null value when exiting constructor. Consider adding the
+'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\
+SmartMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\OpenFoodFacts\Models\Packaging.cs(14,23)
+: warning CS8618: Non-nullable property 'NonRecyclableAndNonBiodegradableMaterials' must contain a non-null value when
+exiting constructor. Consider adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Sou
+rce\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\OpenFoodFacts\Models\Packaging.cs(17,29)
+: warning CS8618: Non-nullable property 'Packagings' must contain a non-null value when exiting constructor. Consider a
+dding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealC
+alculator\SmartMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\OpenFoodFacts\Models\ProductResponse.cs(
+8,24): warning CS8618: Non-nullable property 'Product' must contain a non-null value when exiting constructor. Consider
+ adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMea
+lCalculator\SmartMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\OpenFoodFacts\Models\ProductResponse.cs(
+10,23): warning CS8618: Non-nullable property 'Code' must contain a non-null value when exiting constructor. Consider a
+dding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealC
+alculator\SmartMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\OpenFoodFacts\Models\ProductResponse.cs(
+15,23): warning CS8618: Non-nullable property 'StatusVerbose' must contain a non-null value when exiting constructor. C
+onsider adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\S
+martMealCalculator\SmartMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\OpenFoodFacts\Models\SelectedImage.cs(6,
+34): warning CS8618: Non-nullable property 'Display' must contain a non-null value when exiting constructor. Consider a
+dding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealC
+alculator\SmartMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\OpenFoodFacts\Models\SelectedImage.cs(8,
+34): warning CS8618: Non-nullable property 'Small' must contain a non-null value when exiting constructor. Consider add
+ing the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCal
+culator\SmartMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\OpenFoodFacts\Models\SelectedImage.cs(10
+,34): warning CS8618: Non-nullable property 'Thumb' must contain a non-null value when exiting constructor. Consider ad
+ding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCa
+lculator\SmartMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\OpenFoodFacts\Models\Ingredient.cs(10,23
+): warning CS8618: Non-nullable property 'FromPalmOil' must contain a non-null value when exiting constructor. Consider
+ adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMea
+lCalculator\SmartMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\OpenFoodFacts\Models\Ingredient.cs(12,23
+): warning CS8618: Non-nullable property 'Id' must contain a non-null value when exiting constructor. Consider adding t
+he 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculat
+or\SmartMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\OpenFoodFacts\Models\Ingredient.cs(14,23
+): warning CS8618: Non-nullable property 'Origin' must contain a non-null value when exiting constructor. Consider addi
+ng the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalc
+ulator\SmartMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\OpenFoodFacts\Models\Ingredient.cs(16,23
+): warning CS8618: Non-nullable property 'Percent' must contain a non-null value when exiting constructor. Consider add
+ing the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCal
+culator\SmartMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\OpenFoodFacts\Models\Ingredient.cs(20,23
+): warning CS8618: Non-nullable property 'Text' must contain a non-null value when exiting constructor. Consider adding
+ the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalcul
+ator\SmartMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\OpenFoodFacts\Models\Ingredient.cs(22,23
+): warning CS8618: Non-nullable property 'Vegan' must contain a non-null value when exiting constructor. Consider addin
+g the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalcu
+lator\SmartMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\OpenFoodFacts\Models\Ingredient.cs(24,23
+): warning CS8618: Non-nullable property 'Vegetarian' must contain a non-null value when exiting constructor. Consider
+adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMeal
+Calculator\SmartMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\OpenFoodFacts\Models\LanguagesCodes.cs(6
+,23): warning CS8618: Non-nullable property 'En' must contain a non-null value when exiting constructor. Consider addin
+g the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalcu
+lator\SmartMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\OpenFoodFacts\Models\LanguagesCodes.cs(8
+,23): warning CS8618: Non-nullable property 'Fr' must contain a non-null value when exiting constructor. Consider addin
+g the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalcu
+lator\SmartMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\OpenFoodFacts\Models\LanguagesCodes.cs(1
+0,23): warning CS8618: Non-nullable property 'Pl' must contain a non-null value when exiting constructor. Consider addi
+ng the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalc
+ulator\SmartMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\OpenFoodFacts\Models\SelectedImageItem.c
+s(5,23): warning CS8618: Non-nullable property 'En' must contain a non-null value when exiting constructor. Consider ad
+ding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCa
+lculator\SmartMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\OpenFoodFacts\Models\SelectedImageItem.c
+s(7,23): warning CS8618: Non-nullable property 'Fr' must contain a non-null value when exiting constructor. Consider ad
+ding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCa
+lculator\SmartMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\OpenFoodFacts\Models\SelectedImageItem.c
+s(9,23): warning CS8618: Non-nullable property 'Pl' must contain a non-null value when exiting constructor. Consider ad
+ding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCa
+lculator\SmartMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\OpenFoodFacts\Models\SearchResult.cs(8,3
+0): warning CS8618: Non-nullable property 'Products' must contain a non-null value when exiting constructor. Consider a
+dding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealC
+alculator\SmartMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\OpenFoodFacts\Models\Product.cs(9,31): w
+arning CS8618: Non-nullable property 'LanguagesCodes' must contain a non-null value when exiting constructor. Consider
+adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMeal
+Calculator\SmartMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\OpenFoodFacts\Models\Product.cs(11,27):
+warning CS8618: Non-nullable property 'Nutriments' must contain a non-null value when exiting constructor. Consider add
+ing the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCal
+culator\SmartMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\OpenFoodFacts\Models\Product.cs(12,23):
+warning CS8618: Non-nullable property 'Brands' must contain a non-null value when exiting constructor. Consider adding
+the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalcula
+tor\SmartMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\OpenFoodFacts\Models\Product.cs(14,25):
+warning CS8618: Non-nullable property 'BrandsDebugTags' must contain a non-null value when exiting constructor. Conside
+r adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMe
+alCalculator\SmartMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\OpenFoodFacts\Models\Product.cs(16,25):
+warning CS8618: Non-nullable property 'BrandsTags' must contain a non-null value when exiting constructor. Consider add
+ing the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCal
+culator\SmartMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\OpenFoodFacts\Models\Product.cs(18,25):
+warning CS8618: Non-nullable property 'CountriesHierarchy' must contain a non-null value when exiting constructor. Cons
+ider adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\Smar
+tMealCalculator\SmartMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\OpenFoodFacts\Models\Product.cs(20,23):
+warning CS8618: Non-nullable property 'CountriesLc' must contain a non-null value when exiting constructor. Consider ad
+ding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCa
+lculator\SmartMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\OpenFoodFacts\Models\Product.cs(22,25):
+warning CS8618: Non-nullable property 'CountriesDebugTags' must contain a non-null value when exiting constructor. Cons
+ider adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\Smar
+tMealCalculator\SmartMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\OpenFoodFacts\Models\Product.cs(24,25):
+warning CS8618: Non-nullable property 'CountriesTags' must contain a non-null value when exiting constructor. Consider
+adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMeal
+Calculator\SmartMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\OpenFoodFacts\Models\Product.cs(26,25):
+warning CS8618: Non-nullable property 'CorrectorsTags' must contain a non-null value when exiting constructor. Consider
+ adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMea
+lCalculator\SmartMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\OpenFoodFacts\Models\Product.cs(28,23):
+warning CS8618: Non-nullable property 'ProductName' must contain a non-null value when exiting constructor. Consider ad
+ding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCa
+lculator\SmartMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\OpenFoodFacts\Models\Product.cs(31,25):
+warning CS8618: Non-nullable property 'Keywords' must contain a non-null value when exiting constructor. Consider addin
+g the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalcu
+lator\SmartMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\OpenFoodFacts\Models\Product.cs(33,23):
+warning CS8618: Non-nullable property 'Code' must contain a non-null value when exiting constructor. Consider adding th
+e 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculato
+r\SmartMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\OpenFoodFacts\Models\SelectedImages.cs(6
+,30): warning CS8618: Non-nullable property 'Front' must contain a non-null value when exiting constructor. Consider ad
+ding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCa
+lculator\SmartMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\OpenFoodFacts\Models\SelectedImages.cs(8
+,30): warning CS8618: Non-nullable property 'Ingredients' must contain a non-null value when exiting constructor. Consi
+der adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\Smart
+MealCalculator\SmartMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\OpenFoodFacts\Models\SelectedImages.cs(1
+0,30): warning CS8618: Non-nullable property 'Nutrition' must contain a non-null value when exiting constructor. Consid
+er adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartM
+ealCalculator\SmartMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\Services\MealService.cs(37,20): warning
+CS8603: Possible null reference return. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator
+\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\OpenFoodFacts\Models\Nutriments.cs(19,23
+): warning CS8618: Non-nullable property 'SaltUnit' must contain a non-null value when exiting constructor. Consider ad
+ding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCa
+lculator\SmartMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\OpenFoodFacts\Models\Nutriments.cs(31,23
+): warning CS8618: Non-nullable property 'FatUnit' must contain a non-null value when exiting constructor. Consider add
+ing the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCal
+culator\SmartMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\OpenFoodFacts\Models\Nutriments.cs(43,23
+): warning CS8618: Non-nullable property 'SaturatedFatUnit' must contain a non-null value when exiting constructor. Con
+sider adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\Sma
+rtMealCalculator\SmartMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\OpenFoodFacts\Models\Nutriments.cs(55,23
+): warning CS8618: Non-nullable property 'SugarsUnit' must contain a non-null value when exiting constructor. Consider
+adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMeal
+Calculator\SmartMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\OpenFoodFacts\Models\Nutriments.cs(67,23
+): warning CS8618: Non-nullable property 'CarbohydratesUnit' must contain a non-null value when exiting constructor. Co
+nsider adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\Sm
+artMealCalculator\SmartMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\OpenFoodFacts\Models\Nutriments.cs(76,23
+): warning CS8618: Non-nullable property 'EnergyKcalUnit' must contain a non-null value when exiting constructor. Consi
+der adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\Smart
+MealCalculator\SmartMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\OpenFoodFacts\Models\Nutriments.cs(88,23
+): warning CS8618: Non-nullable property 'ProteinsUnit' must contain a non-null value when exiting constructor. Conside
+r adding the 'required' modifier or declaring the property as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMe
+alCalculator\SmartMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\Services\OpenFoodFactsService.cs(45,39):
+ warning CS8600: Converting null literal or possible null value to non-nullable type. [C:\Users\jespe\Source\Repos\Hell
+strmer\SmartMealCalculator\SmartMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\Services\OpenFoodFactsService.cs(48,24):
+ warning CS8603: Possible null reference return. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealC
+alculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\Services\OpenFoodFactsService.cs(24,24):
+ warning CS0219: The variable 'languageCode' is assigned but its value is never used [C:\Users\jespe\Source\Repos\Hells
+trmer\SmartMealCalculator\SmartMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\Pages\Meal.razor(198,53): warning CS8604
+: Possible null reference argument for parameter 'name' in 'Task MealService.DeleteIngredientAsync(string name)'. [C:\U
+sers\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\Pages\Meal.razor(199,69): warning CS8604
+: Possible null reference argument for parameter 'name' in 'Task<List<Ingredients>> MealService.GetIngredientsAsync(str
+ing name)'. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\Pages\SearchGroceries.razor(16,37): warn
+ing CS8604: Possible null reference argument for parameter 'SearchName' in 'Task SearchGroceries.Search(string SearchNa
+me)'. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\Pages\Meal.razor(208,65): warning CS8604
+: Possible null reference argument for parameter 'name' in 'Task<List<Ingredients>> MealService.GetIngredientsAsync(str
+ing name)'. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\Pages\Meal.razor(227,28): warning CS8602
+: Dereference of a possibly null reference. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalcul
+ator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\Pages\SearchGroceries.razor(70,55): warn
+ing CS8604: Possible null reference argument for parameter 'name' in 'Task IngredientService.DeleteIngredientAsync(stri
+ng name)'. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\Pages\Meal.razor(234,28): warning CS8602
+: Dereference of a possibly null reference. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalcul
+ator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\Pages\Meal.razor(241,26): warning CS8602
+: Dereference of a possibly null reference. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalcul
+ator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\Pages\SearchGroceries.razor(95,31): warn
+ing CS8602: Dereference of a possibly null reference. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\Smart
+MealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\Pages\SearchGroceries.razor(100,20): war
+ning CS8602: Dereference of a possibly null reference. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\Smar
+tMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\Pages\SearchGroceries.razor(104,28): war
+ning CS8602: Dereference of a possibly null reference. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\Smar
+tMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\Pages\SearchGroceries.razor(47,27): warn
+ing CS8618: Non-nullable field 'products' must contain a non-null value when exiting constructor. Consider adding the '
+required' modifier or declaring the field as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\Smar
+tMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\Pages\Meal.razor(92,57): warning CS8618:
+ Non-nullable field 'typeaheadRef' must contain a non-null value when exiting constructor. Consider adding the 'require
+d' modifier or declaring the field as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCa
+lculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\Pages\Meal.razor(96,25): warning CS8618:
+ Non-nullable field 'SelectedIngredient' must contain a non-null value when exiting constructor. Consider adding the 'r
+equired' modifier or declaring the field as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\Smart
+MealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\Pages\Meal.razor(107,27): warning CS8618
+: Non-nullable field 'products' must contain a non-null value when exiting constructor. Consider adding the 'required'
+modifier or declaring the field as nullable. [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalcu
+lator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\Pages\SearchGroceries.razor(47,27): warn
+ing CS0169: The field 'SearchGroceries.products' is never used [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalcula
+tor\SmartMealCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\Pages\Meal.razor(111,30): warning CS0169
+: The field 'Meal.ingredientInput' is never used [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealC
+alculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\Pages\Meal.razor(107,27): warning CS0169
+: The field 'Meal.products' is never used [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculat
+or\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\Pages\Meal.razor(96,25): warning CS0169:
+ The field 'Meal.SelectedIngredient' is never used [C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMea
+lCalculator\SmartMealCalculator.csproj]
+C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\Pages\SearchGroceries.razor(46,17): warn
+ing CS0414: The field 'SearchGroceries.IndexOFF' is assigned but its value is never used [C:\Users\jespe\Source\Repos\H
+ellstrmer\SmartMealCalculator\SmartMealCalculator\SmartMealCalculator.csproj]
+  SmartMealCalculatorServer -> C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculatorServer\bin
+  \Release\net8.0\SmartMealCalculatorServer.dll
+  SmartMealCalculatorServer -> C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\out\
+  SmartMealCalculator -> C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\bin\Release\net
+  8.0\SmartMealCalculator.dll
+  SmartMealCalculator (Blazor output) -> C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator
+  \bin\Release\net8.0\wwwroot
+C:\Program Files\dotnet\sdk-manifests\8.0.100\microsoft.net.workload.mono.toolchain.current\8.0.11\WorkloadManifest.tar
+gets(187,5): warning : @(NativeFileReference) is not empty, but the native references won't be linked in, because neith
+er $(WasmBuildNative), nor $(RunAOTCompilation) are 'true'. NativeFileReference=C:\Users\jespe\.nuget\packages\sqlitepc
+lraw.lib.e_sqlite3\2.1.10\buildTransitive\net8.0\..\..\runtimes\browser-wasm\nativeassets\net8.0\e_sqlite3.a [C:\Users\
+jespe\Source\Repos\Hellstrmer\SmartMealCalculator\SmartMealCalculator\SmartMealCalculator.csproj]
+  Optimizing assemblies for size may change the behavior of the app. Be sure to test after publishing. See: https://aka
+  .ms/dotnet-illink
+  Optimizing assemblies for size. This process might take a while.
+  Publishing without optimizations. Although it's optional for Blazor, we strongly recommend using `wasm-tools` workloa
+  d! You can install it by running `dotnet workload install wasm-tools` from the command line.
+  SmartMealCalculator -> C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\out\
+PS C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator> ls out
+
+
+    Directory: C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator\out
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        10/02/2025     18:06                runtimes
+d-----        10/02/2025     18:06                wwwroot
+-a----        06/01/2025     16:11            127 appsettings.Development.json
+-a----        01/02/2025     16:28            633 appsettings.json
+-a----        11/09/2024     22:05        1192598 e_sqlite3.a
+-a----        29/10/2024     10:57         174632 Microsoft.Data.Sqlite.dll
+-a----        29/10/2024     10:57          34856 Microsoft.EntityFrameworkCore.Abstractions.dll
+-a----        29/10/2024     10:57        2683432 Microsoft.EntityFrameworkCore.dll
+-a----        29/10/2024     10:58        2137136 Microsoft.EntityFrameworkCore.Relational.dll
+-a----        29/10/2024     10:59         294968 Microsoft.EntityFrameworkCore.Sqlite.dll
+-a----        29/10/2024     03:43          36632 Microsoft.Extensions.Caching.Abstractions.dll
+-a----        29/10/2024     03:49          47368 Microsoft.Extensions.Caching.Memory.dll
+-a----        29/10/2024     03:43          28440 Microsoft.Extensions.Configuration.Abstractions.dll
+-a----        29/10/2024     03:41          65288 Microsoft.Extensions.DependencyInjection.Abstractions.dll
+-a----        29/10/2024     03:42          92424 Microsoft.Extensions.DependencyInjection.dll
+-a----        29/10/2024     03:47          84232 Microsoft.Extensions.DependencyModel.dll
+-a----        29/10/2024     03:48          66336 Microsoft.Extensions.Logging.Abstractions.dll
+-a----        29/10/2024     03:49          51480 Microsoft.Extensions.Logging.dll
+-a----        29/10/2024     03:43          65296 Microsoft.Extensions.Options.dll
+-a----        29/10/2024     03:40          44296 Microsoft.Extensions.Primitives.dll
+-a----        29/08/2020     22:14         173960 Microsoft.OpenApi.dll
+-a----        08/03/2023     08:09         712464 Newtonsoft.Json.dll
+-a----        10/02/2025     18:06          41868 SmartMealCalculatorServer.deps.json
+-a----        10/02/2025     18:06          43520 SmartMealCalculatorServer.dll
+-a----        10/02/2025     18:06         139264 SmartMealCalculatorServer.exe
+-a----        10/02/2025     18:06          33564 SmartMealCalculatorServer.pdb
+-a----        10/02/2025     18:06            557 SmartMealCalculatorServer.runtimeconfig.json
+-a----        11/09/2024     22:14           5120 SQLitePCLRaw.batteries_v2.dll
+-a----        11/09/2024     22:12          51200 SQLitePCLRaw.core.dll
+-a----        11/09/2024     22:12          36864 SQLitePCLRaw.provider.e_sqlite3.dll
+-a----        19/07/2022     17:21          15360 Swashbuckle.AspNetCore.Swagger.dll
+-a----        19/07/2022     17:21          96768 Swashbuckle.AspNetCore.SwaggerGen.dll
+-a----        19/07/2022     17:21        3416576 Swashbuckle.AspNetCore.SwaggerUI.dll
+-a----        29/10/2024     03:47         173840 System.Diagnostics.DiagnosticSource.dll
+-a----        29/10/2024     03:46          77608 System.IO.Pipelines.dll
+-a----        29/10/2024     03:40          70960 System.Text.Encodings.Web.dll
+-a----        29/10/2024     03:47         643872 System.Text.Json.dll
+-a----        10/02/2025     18:06            569 web.config
+
+
+PS C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator>
+PS C:\Users\jespe\Source\Repos\Hellstrmer\SmartMealCalculator> 

@@ -1,27 +1,59 @@
+# services:
+#   backend:
+#     build:
+#       context: https://github.com/Hellstrmer/SmartMealCalculator.git#main
+#       dockerfile: SmartMealCalculatorServer/Dockerfile
+#       args:
+#         BUILD_CONFIGURATION: ${BUILD_CONFIGURATION:-Release}
+#     container_name: smartmealcalculatorServer
+#     restart: unless-stopped
+#     ports:
+#       - "5099:80"
+#     networks:
+#       - myapp_network
+#     environment:
+#       - ASPNETCORE_ENVIRONMENT=Release
+#     volumes:
+#       - /data/compose/10/SmartMealCalculatorServer:/app/data
+
+#   frontend:
+#     build:
+#       context: https://github.com/Hellstrmer/SmartMealCalculator.git#main
+#       dockerfile: SmartMealCalculator/Dockerfile
+#     container_name: smartmealcalculator
+#     restart: unless-stopped
+#     ports:
+#       - "5195:80"
+#     networks:
+#       - myapp_network
+#     depends_on:
+#       - backend
+#     environment:
+#       - API_BASE_URL=http://smartmealcalculatorServer:80
+
+# networks:
+#   myapp_network:
+#     name: myapp_network
+#     external: true
+##
+##Bygg lokalt
+##
 services:
   backend:
     build:
-      context: https://github.com/Hellstrmer/SmartMealCalculator.git#main
+      context: .
       dockerfile: SmartMealCalculatorServer/Dockerfile
-      args:
-        BUILD_CONFIGURATION: ${BUILD_CONFIGURATION:-Release}
     container_name: smartmealcalculatorServer
-    restart: unless-stopped
     ports:
       - "5099:80"
     networks:
       - myapp_network
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Release
-    volumes:
-      - /data/compose/10/SmartMealCalculatorServer:/app/data
 
   frontend:
     build:
-      context: https://github.com/Hellstrmer/SmartMealCalculator.git#main
+      context: .
       dockerfile: SmartMealCalculator/Dockerfile
     container_name: smartmealcalculator
-    restart: unless-stopped
     ports:
       - "5195:80"
     networks:

@@ -3,53 +3,50 @@
 #ARG BUILD_CONFIGURATION=Release
 #
 #FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+
+
+## Base stage for runtime
+#FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
+#WORKDIR /app
+#EXPOSE 80
+#
+## Build stage
+#FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 #WORKDIR /src
 #
-#COPY SmartMealCalculatorServer/SmartMealCalculatorServer.csproj ./
-#RUN dotnet restore
+## Copy and restore the project file
+#COPY ["SmartMealCalculatorServer/SmartMealCalculatorServer.csproj", "SmartMealCalculatorServer/"]
+#RUN dotnet restore "SmartMealCalculatorServer/SmartMealCalculatorServer.csproj" --verbosity detailed
 #
-#COPY SmartMealCalculatorServer/ ./
+## Copy the rest of the source code
+#COPY SmartMealCalculatorServer/ ./SmartMealCalculatorServer/
+#
+## Build the project
+#RUN dotnet build "SmartMealCalculatorServer/SmartMealCalculatorServer.csproj" -c Release -o /app/build --verbosity detailed
+#
+## Publish the project
+#FROM build AS publish
 #RUN dotnet publish "SmartMealCalculatorServer/SmartMealCalculatorServer.csproj" -c Release -o /app/publish --verbosity detailed
 #RUN ls -la /app/publish  # Kontrollera utdata
 #
-#FROM final AS final
+## Final stage
+#FROM base AS final
 #WORKDIR /app
-#COPY --from=build /app/publish .
-#RUN ls -la  # Kontrollera att filerna finns i /app
-#ENTRYPOINT ["dotnet", "SmartMealCalculatorServer.dll"]
-#ENV ASPNETCORE_ENVIRONMENT=Release
-#
-##RUN ls -la
-#
+#COPY --from=publish /app/publish .
+#RUN ls -la  
 #ENTRYPOINT ["dotnet", "SmartMealCalculatorServer.dll"]
 
-# Base stage for runtime
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
-WORKDIR /app
-EXPOSE 80
-
-# Build stage
+##
+#Bygg lokalt#
+##
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
+COPY SmartMealCalculatorServer/*.csproj ./
+RUN dotnet restore
+COPY SmartMealCalculatorServer/ ./
+RUN dotnet publish -c Release -o /app/publish
 
-# Copy and restore the project file
-COPY ["SmartMealCalculatorServer/SmartMealCalculatorServer.csproj", "SmartMealCalculatorServer/"]
-RUN dotnet restore "SmartMealCalculatorServer/SmartMealCalculatorServer.csproj" --verbosity detailed
-
-# Copy the rest of the source code
-COPY SmartMealCalculatorServer/ ./SmartMealCalculatorServer/
-
-# Build the project
-RUN dotnet build "SmartMealCalculatorServer/SmartMealCalculatorServer.csproj" -c Release -o /app/build --verbosity detailed
-
-# Publish the project
-FROM build AS publish
-RUN dotnet publish "SmartMealCalculatorServer/SmartMealCalculatorServer.csproj" -c Release -o /app/publish --verbosity detailed
-RUN ls -la /app/publish  # Kontrollera utdata
-
-# Final stage
-FROM base AS final
+FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
-COPY --from=publish /app/publish .
-RUN ls -la  
+COPY --from=build /app/publish .
 ENTRYPOINT ["dotnet", "SmartMealCalculatorServer.dll"]
