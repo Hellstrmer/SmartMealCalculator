@@ -52,7 +52,7 @@ services:
       - ASPNETCORE_ENVIRONMENT=Release
       - TZ=Europe/Stockholm
     volumes:
-      - /data/compose/1/SmartMealCalculatorServer/ingredients.db:/app/ingredients.db
+      - /data/compose/10/SmartMealCalculatorServer:/app/data
 
   frontend:
     build:
