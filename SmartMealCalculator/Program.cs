@@ -15,9 +15,24 @@ if (string.IsNullOrEmpty(apiBaseUrl))
 
 
 
-builder.Services.AddScoped(sp => new HttpClient
+//builder.Services.AddScoped(sp => new HttpClient
+//{
+//    //BaseAddress = new Uri(apiBaseUrl)
+//    BaseAddress = new Uri(builder.HostEnvironment.IsDevelopment()    
+//                ? "https://192.168.50.51:5098"  // Development
+//                : "apiBaseUrl")
+//});
+builder.Services.AddScoped(sp =>
 {
-    BaseAddress = new Uri(apiBaseUrl)
+    var httpClient = new HttpClient
+    {
+        BaseAddress = new Uri(
+            builder.HostEnvironment.IsDevelopment()
+                ? "https://192.168.50.51:5098"  // Development
+                : apiBaseUrl  // Production
+        )
+    };
+    return httpClient;
 });
 
 builder.Services.AddScoped<IngredientService>();
