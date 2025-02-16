@@ -1,43 +1,3 @@
-# services:
-#   backend:
-#     build:
-#       context: https://github.com/Hellstrmer/SmartMealCalculator.git#main
-#       dockerfile: SmartMealCalculatorServer/Dockerfile
-#       args:
-#         BUILD_CONFIGURATION: ${BUILD_CONFIGURATION:-Release}
-#     container_name: smartmealcalculatorServer
-#     restart: unless-stopped
-#     ports:
-#       - "5099:80"
-#     networks:
-#       - myapp_network
-    # environment:
-    #   - ASPNETCORE_ENVIRONMENT=Release
-    # volumes:
-    #   - /data/compose/10/SmartMealCalculatorServer:/app/data
-
-#   frontend:
-#     build:
-#       context: https://github.com/Hellstrmer/SmartMealCalculator.git#main
-#       dockerfile: SmartMealCalculator/Dockerfile
-#     container_name: smartmealcalculator
-#     restart: unless-stopped
-#     ports:
-#       - "5195:80"
-#     networks:
-#       - myapp_network
-#     depends_on:
-#       - backend
-#     environment:
-#       - API_BASE_URL=http://smartmealcalculatorServer:80
-
-# networks:
-#   myapp_network:
-#     name: myapp_network
-#     external: true
-##
-##Bygg lokalt
-##
 services:
   backend:
     build:
@@ -53,6 +13,18 @@ services:
       - TZ=Europe/Stockholm
     volumes:
       - /data/compose/10/SmartMealCalculatorServer:/app/data
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.smartmeal.entrypoints=http"
+      - "traefik.http.routers.smartmeal.rule=Host(`api.smartmeal.jesperhellstrom.com`)"
+      - "traefik.http.middlewares.smartmeal-https-redirect.redirectscheme.scheme=https"
+      - "traefik.http.routers.smartmeal.middlewares=smartmeal-https-redirect"
+      - "traefik.http.routers.smartmeal-secure.entrypoints=https"
+      - "traefik.http.routers.smartmeal-secure.rule=Host(`api.smartmeal.jesperhellstrom.com`)"
+      - "traefik.http.routers.smartmeal-secure.tls=true"
+      - "traefik.http.routers.smartmeal-secure.service=smartmeal"
+      - "traefik.http.services.smartmeal.loadbalancer.server.port=9000"
+      - "traefik.docker.network=proxy"
 
   frontend:
     build:
