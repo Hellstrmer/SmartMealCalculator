@@ -15,15 +15,15 @@ services:
       - /data/compose/10/SmartMealCalculatorServer:/app/data
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.smartmeal.entrypoints=http"
-      - "traefik.http.routers.smartmeal.rule=Host(`api.smartmeal.jesperhellstrom.com`)"
-      - "traefik.http.middlewares.smartmeal-https-redirect.redirectscheme.scheme=https"
-      - "traefik.http.routers.smartmeal.middlewares=smartmeal-https-redirect"
-      - "traefik.http.routers.smartmeal-secure.entrypoints=https"
-      - "traefik.http.routers.smartmeal-secure.rule=Host(`api.smartmeal.jesperhellstrom.com`)"
-      - "traefik.http.routers.smartmeal-secure.tls=true"
-      - "traefik.http.routers.smartmeal-secure.service=smartmeal"
-      - "traefik.http.services.smartmeal.loadbalancer.server.port=9000"
+      - "traefik.http.routers.smartmealcalculator-backend.entrypoints=http"
+      - "traefik.http.routers.smartmealcalculator-backend.rule=Host(`api.smartmeal.jesperhellstrom.com`)"
+      - "traefik.http.middlewares.smartmealcalculator-backend-https-redirect.redirectscheme.scheme=https"
+      - "traefik.http.routers.smartmealcalculator-backend.middlewares=smartmealcalculator-backend-https-redirect"
+      - "traefik.http.routers.smartmealcalculator-backend-secure.entrypoints=https"
+      - "traefik.http.routers.smartmealcalculator-backend-secure.rule=Host(`api.smartmeal.jesperhellstrom.com`)"
+      - "traefik.http.routers.smartmealcalculator-backend-secure.tls=true"
+      - "traefik.http.routers.smartmealcalculator-backend-secure.service=smartmealcalculator-backend"
+      - "traefik.http.services.smartmealcalculator-backend.loadbalancer.server.port=9000"
       - "traefik.docker.network=proxy"
 
   frontend:
