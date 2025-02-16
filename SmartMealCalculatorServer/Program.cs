@@ -41,7 +41,7 @@ builder.Services.AddCors(options =>
              policy
                 .WithOrigins(
                     "https://smartmeal.jesperhellstrom.com",
-                    "https://api.smartmeal.jesperhellstrom.com"
+                    "https://apismartmeal.jesperhellstrom.com"
                     )
                 .AllowAnyMethod()
                 .AllowAnyHeader();
