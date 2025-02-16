@@ -53,11 +53,11 @@
 </div> 
 
 <div class="active-ingredient-row">
-    <span>@NewIngredient.ProductName</span>
+    @* <span>@NewIngredient.ProductName</span>
     <span>@($"{NewIngredient.EnergyKcal100g} Kcal/100g")</span>
     <span>@($"{NewIngredient.Amount} g")</span>
     <span>@($"{NewIngredient.Portions} st")</span>
-    <span>@($"{NewIngredient.PerPortion} Kcal/Portion")</span>
+    <span>@($"{NewIngredient.PerPortion} Kcal/Portion")</span> *@
 </div>
         @foreach (var (ingredient, index) in IngredientsList.Select((ingredient, index) => (ingredient, index)))
         {
@@ -68,8 +68,7 @@
                 <span>@($"{ingredient.Portions} st")</span>
                 <span>@($"{Math.Floor((ingredient.PerPortion ?? 0)):F0} Kcal/Portion")</span>
             </div>
-        }
-    
+        }    
 
 <div class="ingredient-row">
     @if (TotalCalories > 0)
@@ -88,8 +87,6 @@
 </div>
 
 @code {
-
-
     private BlazoredTypeahead<Ingredients, Ingredients> typeaheadRef;
     private List<Ingredients> IngredientsList = new List<Ingredients>();
     private Ingredients NewIngredient = new Ingredients();
@@ -158,6 +155,7 @@
     {
         if (ingredients == null) return;
         NewIngredient = ingredients;
+        NewCalorie = NewIngredient.EnergyKcal100g;
         NewIngredient.UseCount ++;
         amountInput.FocusAsync();
     }
