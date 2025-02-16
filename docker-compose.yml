@@ -5,7 +5,8 @@ services:
       dockerfile: SmartMealCalculatorServer/Dockerfile
     container_name: smartmealcalculatorServer
     ports:
-      - "5099:80"
+      - "5099:8080"
+
     networks:
       - proxy
     environment:
