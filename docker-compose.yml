@@ -6,6 +6,7 @@ services:
     container_name: smartmealcalculatorServer
     ports:
       - "5099:80"
+      - "5098:443"
     networks:
       - proxy
     environment:
