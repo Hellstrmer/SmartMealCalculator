@@ -16,7 +16,7 @@ if (builder.Environment.IsDevelopment())
 else
 {
     builder.WebHost.UseKestrel(options =>
-    options.ListenAnyIP(80));
+    options.ListenAnyIP(8080));
 }
 
 //CORS
