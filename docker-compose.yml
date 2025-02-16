@@ -16,11 +16,11 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.smartmealcalculator-backend.entrypoints=http"
-      - "traefik.http.routers.smartmealcalculator-backend.rule=Host(`api.smartmeal.jesperhellstrom.com`)"
+      - "traefik.http.routers.smartmealcalculator-backend.rule=Host(`apismartmeal.jesperhellstrom.com`)"
       - "traefik.http.middlewares.smartmealcalculator-backend-https-redirect.redirectscheme.scheme=https"
       - "traefik.http.routers.smartmealcalculator-backend.middlewares=smartmealcalculator-backend-https-redirect"
       - "traefik.http.routers.smartmealcalculator-backend-secure.entrypoints=https"
-      - "traefik.http.routers.smartmealcalculator-backend-secure.rule=Host(`api.smartmeal.jesperhellstrom.com`)"
+      - "traefik.http.routers.smartmealcalculator-backend-secure.rule=Host(`apismartmeal.jesperhellstrom.com`)"
       - "traefik.http.routers.smartmealcalculator-backend-secure.tls=true"
       - "traefik.http.services.smartmealcalculator-backend.loadbalancer.server.port=80"
 
@@ -36,7 +36,7 @@ services:
     depends_on:
       - backend
     environment:
-      - API_BASE_URL=https://api.smartmeal.jesperhellstrom.com
+      - API_BASE_URL=https://apismartmeal.jesperhellstrom.com
 
 networks:
   proxy:
