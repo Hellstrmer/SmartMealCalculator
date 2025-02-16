@@ -39,10 +39,11 @@ builder.Services.AddCors(options =>
         else
         {
              policy
-                .WithOrigins(
-                    "https://smartmeal.jesperhellstrom.com",
-                    "https://apismartmeal.jesperhellstrom.com"
-                    )
+                //.WithOrigins(
+                //    "https://smartmeal.jesperhellstrom.com",
+                //    "https://apismartmeal.jesperhellstrom.com"
+                //    )
+                .AllowAnyOrigin()
                 .AllowAnyMethod()
                 .AllowAnyHeader();
         }
