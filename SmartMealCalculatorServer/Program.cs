@@ -19,7 +19,6 @@ else
     builder.WebHost.UseKestrel(options =>
     {
         options.ListenAnyIP(8080); // HTTP
-        options.ListenAnyIP(443, configure => configure.UseHttps()); // HTTPS
     });
 }
 
