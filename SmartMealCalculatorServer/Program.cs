@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Routing.Matching;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using SmartMealCalculatorServer.Helpers;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,7 +17,10 @@ if (builder.Environment.IsDevelopment())
 else
 {
     builder.WebHost.UseKestrel(options =>
-    options.ListenAnyIP(8080));
+    {
+        options.ListenAnyIP(8080); // HTTP
+        options.ListenAnyIP(443, configure => configure.UseHttps()); // HTTPS
+    });
 }
 
 //CORS
@@ -35,6 +39,7 @@ builder.Services.AddCors(options =>
                     )
             .AllowAnyMethod()
             .AllowAnyHeader();
+
         }
         else
         {
@@ -46,9 +51,6 @@ builder.Services.AddCors(options =>
                 .AllowAnyMethod()
                 .AllowAnyHeader();
         }
-/*        policy.AllowAnyOrigin()
-              .AllowAnyMethod()
-              .AllowAnyHeader();*/
     });
 });
 
@@ -64,6 +66,7 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+app.UseCors("AllowSmartMealApp");
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -78,7 +81,6 @@ else
 }
 
 
-app.UseCors("AllowSmartMealApp");
 app.MapControllers();
 
 using (var scope = app.Services.CreateScope())

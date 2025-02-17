@@ -23,7 +23,7 @@ services:
       - "traefik.http.routers.smartmealcalculator-backend-secure.entrypoints=https"
       - "traefik.http.routers.smartmealcalculator-backend-secure.rule=Host(`apismartmeal.jesperhellstrom.com`)"
       - "traefik.http.routers.smartmealcalculator-backend-secure.tls=true"
-      - "traefik.http.services.smartmealcalculator-backend.loadbalancer.server.port=5099"
+      - "traefik.http.services.smartmealcalculator-backend.loadbalancer.server.port=8080"
 
   frontend:
     build:
