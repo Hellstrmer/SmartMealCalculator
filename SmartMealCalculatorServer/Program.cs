@@ -38,7 +38,6 @@ builder.Services.AddCors(options =>
                     )
             .AllowAnyMethod()
             .AllowAnyHeader();
-
         }
         else
         {

@@ -52,23 +52,17 @@
     }
 </div> 
 
-<div class="active-ingredient-row">
-    @* <span>@NewIngredient.ProductName</span>
-    <span>@($"{NewIngredient.EnergyKcal100g} Kcal/100g")</span>
-    <span>@($"{NewIngredient.Amount} g")</span>
-    <span>@($"{NewIngredient.Portions} st")</span>
-    <span>@($"{NewIngredient.PerPortion} Kcal/Portion")</span> *@
-</div>
-        @foreach (var (ingredient, index) in IngredientsList.Select((ingredient, index) => (ingredient, index)))
-        {
-            <div class="ingredient-row @GetRowClass(index)" @onclick="() => SetIndex(index)">
-                <span>@($"{ingredient.ProductName}")</span>
-                <span>@($"{ingredient.EnergyKcal100g} Kcal/100g")</span>
-                <span>@($"{ingredient.Amount} g")</span>
-                <span>@($"{ingredient.Portions} st")</span>
-                <span>@($"{Math.Floor((ingredient.PerPortion ?? 0)):F0} Kcal/Portion")</span>
-            </div>
-        }    
+        
+@foreach (var (ingredient, index) in IngredientsList.Select((ingredient, index) => (ingredient, index)))   
+{     
+    <div class="ingredient-row @GetRowClass(index)" @onclick="() => SetIndex(index)">               
+        <span>@($"{ingredient.ProductName}")</span>               
+        <span>@($"{ingredient.EnergyKcal100g} Kcal/100g")</span>                
+        <span>@($"{ingredient.Amount} g")</span>               
+        <span>@($"{ingredient.Portions} st")</span>               
+        <span>@($"{Math.Floor((ingredient.PerPortion ?? 0)):F0} Kcal/Portion")</span>            
+    </div>        
+}    
 
 <div class="ingredient-row">
     @if (TotalCalories > 0)
@@ -148,7 +142,6 @@
             await Task.Delay(1);
         }
     }
-
 
     //Handle search input
     private void HandleSearch(Ingredients ingredients)
