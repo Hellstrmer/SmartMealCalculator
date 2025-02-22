@@ -166,23 +166,48 @@
     {
         if (SearchName != null)
         {
-            var result = await OpenFoodFactsService.SearchProductAsync(SearchName);
-            foreach (var product in result.Products)
+           
+            bool isBarcode(string s) => s.All(char.IsDigit);
+            if (!isBarcode(SearchName))
             {
+                var result = await OpenFoodFactsService.SearchProductAsync(SearchName);
+                foreach (var product in result.Products)
+                {
+                    Ingredients ing = new Ingredients();
+                    ing.Code = product.Code;
+                    ing.ProductName = product.ProductName;
+                    ing.Brands = product.Brands;
+                    ing.Salt100g = product.Nutriments.Salt100g;
+                    ing.Fat100g = product.Nutriments.Fat100g;
+                    ing.Sugars100g = product.Nutriments.Sugars100g;
+                    ing.Carbohydrates100g = product.Nutriments.Carbohydrates100g;
+                    ing.EnergyKcal100g = product.Nutriments.EnergyKcal100g;
+                    ing.Proteins100g = product.Nutriments.Proteins100g;
+                    ing.Created = DateTime.Now;
+                    FoundIngredients.Add(ing);
+                    await AddIngredient(ing);
+                }
+            } 
+            else
+            {
+                var result = await OpenFoodFactsService.SearchBarcodeASync(SearchName);
                 Ingredients ing = new Ingredients();
-                ing.Code = product.Code;
-                ing.ProductName = product.ProductName;
-                ing.Brands = product.Brands;
-                ing.Salt100g = product.Nutriments.Salt100g;
-                ing.Fat100g = product.Nutriments.Fat100g;
-                ing.Sugars100g = product.Nutriments.Sugars100g;
-                ing.Carbohydrates100g = product.Nutriments.Carbohydrates100g;
-                ing.EnergyKcal100g = product.Nutriments.EnergyKcal100g;
-                ing.Proteins100g = product.Nutriments.Proteins100g;
+                ing.Code = result.product.Code;
+                ing.ProductName = result.product.ProductName;
+                ing.Brands = result.product.Brands;
+                ing.Salt100g = result.product.Nutriments.Salt100g;
+                ing.Fat100g = result.product.Nutriments.Fat100g;
+                ing.Sugars100g = result.product.Nutriments.Sugars100g;
+                ing.Carbohydrates100g = result.product.Nutriments.Carbohydrates100g;
+                ing.EnergyKcal100g = result.product.Nutriments.EnergyKcal100g;
+                ing.Proteins100g = result.product.Nutriments.Proteins100g;
                 ing.Created = DateTime.Now;
                 FoundIngredients.Add(ing);
                 await AddIngredient(ing);
+
             }
+
+            
         }
     }
 }

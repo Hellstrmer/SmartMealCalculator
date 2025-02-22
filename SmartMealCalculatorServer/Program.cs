@@ -1,8 +1,9 @@
+using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.AspNetCore.Routing.Matching;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using SmartMealCalculatorServer.Helpers;
-
+using SmartMealCalculatorServer.Hubs;
 var builder = WebApplication.CreateBuilder(args);
 
 
@@ -61,10 +62,19 @@ builder.Services.AddLogging();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+//SignalR
+builder.Services.AddSignalR();
+
+builder.Services.AddResponseCompression(opts =>
+{
+    opts.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(
+        ["application/octet-stream"]);
+});
 
 var app = builder.Build();
 
 app.UseCors("AllowSmartMealApp");
+app.UseResponseCompression();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -80,6 +90,7 @@ else
 
 
 app.MapControllers();
+app.MapHub<SignalRhub>("/weight");
 
 using (var scope = app.Services.CreateScope())
 {

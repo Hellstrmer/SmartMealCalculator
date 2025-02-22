@@ -1,10 +1,5 @@
-﻿using System.Text.Json;
-
-using System.Net.Http.Json;
-using System.Text.Json.Serialization;
-using OpenFoodFactsCSharp.Models;
+﻿using OpenFoodFactsCSharp.Models;
 using Newtonsoft.Json;
-using System.Diagnostics;
 
 namespace SmartMealCalculator
 {
@@ -26,12 +21,12 @@ namespace SmartMealCalculator
                 string encodedName = Uri.EscapeDataString(productName);
                 string queryString = $"{ApiUrl}/cgi/search.pl?" +
                     $"search_terms={encodedName}" +
-                    $"&search_simple=1" +            
-                    $"&action=process" +            
-                    $"&json=1" +            
-                    $"&fields={fields}" +            
-                    $"&lc=sv" +                    
-                    $"&cc=se" +            
+                    $"&search_simple=1" +
+                    $"&action=process" +
+                    $"&json=1" +
+                    $"&fields={fields}" +
+                    $"&lc=sv" +
+                    $"&cc=se" +
                     $"&countries=Sweden";
 
                 Console.WriteLine($"URL: {queryString}");
@@ -53,5 +48,30 @@ namespace SmartMealCalculator
                 throw;
             }
         }
-    }
+        public async Task<SearchResultV2> SearchBarcodeASync(string barcode)
+        {
+            try
+            {
+                string fields = "code,product_name,brands,nutriments,countries,countries_tags,lang";
+                string queryString = $"{ApiUrl}/api/v2/product/{barcode}?fields={fields}";
+
+                Console.WriteLine($"URL: {queryString}");
+
+                var response = await _httpClient.GetAsync(queryString);
+                response.EnsureSuccessStatusCode();
+
+                string jsonResponse = await response.Content.ReadAsStringAsync();
+                Console.WriteLine($"JSON Response: {jsonResponse}");
+
+                var result = JsonConvert.DeserializeObject<SearchResultV2>(jsonResponse);
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error searching for product: {ex.Message}");
+                throw;
+            }
+        }
+    }    
 }
