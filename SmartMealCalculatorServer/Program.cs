@@ -2,8 +2,11 @@ using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.AspNetCore.Routing.Matching;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
+using SmartMealCalculatorServer.Auth;
 using SmartMealCalculatorServer.Helpers;
 using SmartMealCalculatorServer.Hubs;
+using Microsoft.SqlServer;
+using Microsoft.AspNetCore.Identity;
 var builder = WebApplication.CreateBuilder(args);
 
 
@@ -55,6 +58,18 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddDbContext<IngredientsDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+//Auth
+builder.Services.AddDbContext<AuthDBContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
+{
+    options.Password.RequireDigit = true;
+    options.Password.RequiredLength = 10;
+    options.SignIn.RequireConfirmedAccount = true;
+})
+    .AddEntityFrameworkStores<AuthDBContext>();
 
 // Add services to the container.
 builder.Services.AddControllers();

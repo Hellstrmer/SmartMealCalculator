@@ -30,5 +30,9 @@ builder.Services.AddScoped(sp =>
 builder.Services.AddScoped<IngredientService>();
 builder.Services.AddScoped<MealService>();
 builder.Services.AddScoped<OpenFoodFactsService>();
+builder.Services.AddOidcAuthentication(options =>
+{
+    builder.Configuration.Bind("Local", options.ProviderOptions);
+});
 
 await builder.Build().RunAsync();

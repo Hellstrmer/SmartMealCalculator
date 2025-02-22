@@ -1,0 +1,28 @@
+﻿@page "/login"
+@using Microsoft.AspNetCore.Components.Authorization
+@using SmartMealCalculator.Models
+@inject NavigationManager Navigation
+@inject AuthenticationStateProvider AuthStateProvider
+
+<EditForm Model="@loginModel" OnValidSubmit="HandleLogin">
+    <DataAnnotationsValidator />
+
+    <InputText @bind-Value="loginModel.Email" />
+    <InputText type="password" @bind-Value="loginModel.Password" />
+
+    <button type="submit">Logga in</button>
+</EditForm>
+
+@code {
+    private LoginModel loginModel = new();
+
+    private async Task HandleLogin()
+    {
+        // Implement your login logic here using AuthenticationStateProvider
+        // Example:
+        if (loginModel.Email == "test@test.com" && loginModel.Password == "password")
+        {
+            Navigation.NavigateTo("/");
+        }
+    }
+}
