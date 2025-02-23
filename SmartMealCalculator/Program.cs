@@ -20,7 +20,7 @@ builder.Services.AddScoped(sp =>
     {
         BaseAddress = new Uri(
             builder.HostEnvironment.IsDevelopment()
-                ? "https://192.168.50.51:5099"  // Development
+                ? "http://localhost:5099"  // Development
                 : apiBaseUrl  // Production
         )
     };

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace SmartMealCalculatorServer.Auth
 {
-    public class AuthDBContext : IdentityDbContext
+    public class AuthDBContext : IdentityDbContext<IdentityUser>
     {
         public AuthDBContext(DbContextOptions<AuthDBContext> options) : base(options) 
         {

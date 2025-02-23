@@ -34,12 +34,13 @@ builder.Services.AddCors(options =>
         if (builder.Environment.IsDevelopment())
         {
             policy
-                .WithOrigins(
+                /*.WithOrigins(
                     "http://localhost:5195",
                     "https://localhost:5195",
                     "http://192.168.50.51:5195",
                     "https://192.168.50.51:5195"
-                    )
+                    )*/
+                .AllowAnyOrigin()
             .AllowAnyMethod()
             .AllowAnyHeader();
         }
@@ -61,14 +62,11 @@ builder.Services.AddDbContext<IngredientsDbContext>(options =>
 
 //Auth
 builder.Services.AddDbContext<AuthDBContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("AuthDb")));
 
-builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
-{
-    options.Password.RequireDigit = true;
-    options.Password.RequiredLength = 10;
-    options.SignIn.RequireConfirmedAccount = true;
-})
+builder.Services.AddAuthorization();
+
+builder.Services.AddIdentityApiEndpoints<IdentityUser>()
     .AddEntityFrameworkStores<AuthDBContext>();
 
 // Add services to the container.
@@ -102,6 +100,7 @@ else
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.MapIdentityApi<IdentityUser>();
 
 
 app.MapControllers();
