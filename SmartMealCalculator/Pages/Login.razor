@@ -12,9 +12,20 @@
 
     <button type="submit">Logga in</button>
 </EditForm>
+<EditForm Model="@registerModel" OnValidSubmit="HandleRegistration">
+    <DataAnnotationsValidator />
+
+    <InputText @bind-Value="registerModel.Email" />
+    <InputText type="password" @bind-Value="registerModel.Password" />
+    <InputText type="firstname" @bind-Value="registerModel.Firstname" />
+    <InputText type="lastname" @bind-Value="registerModel.Lastname" />
+
+    <button type="submit">Register</button>
+</EditForm>
 
 @code {
     private LoginModel loginModel = new();
+    private RegisterModel registerModel = new();
 
     private async Task HandleLogin()
     {
@@ -24,5 +35,9 @@
         {
             Navigation.NavigateTo("/");
         }
+    }
+    private async Task HandleRegistration()
+    {
+        
     }
 }
