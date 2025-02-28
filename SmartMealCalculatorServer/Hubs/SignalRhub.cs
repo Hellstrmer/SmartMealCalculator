@@ -2,11 +2,18 @@
 
 namespace SmartMealCalculatorServer.Hubs
 {
-    public class SignalRhub : Hub
+    public sealed class SignalRhub : Hub<IWeightClient>
     {
-        public async Task SendMessage(string user, string message)
+        public override async Task OnConnectedAsync()
         {
-            await Clients.All.SendAsync("RecieveMessage", user, message);
+            await Clients.All.RecieveMessage($"{Context.ConnectionId} has joined");
         }
+        
+        public async Task SendMessage(string Message)
+        {
+            await Clients.All.RecieveMessage($"{Context.ConnectionId}: {Message}");
+        }
+
+
     }
 }

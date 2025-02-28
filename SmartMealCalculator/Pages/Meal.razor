@@ -4,7 +4,12 @@
 @inject MealService MealService
 @inject OpenFoodFactsService OpenFoodFactsService
 @inject IJSRuntime JSRuntime
+@inject NavigationManager Navigation
+@inject string SignalRUrl
+@inject SignalRService SignalRService
+@using Microsoft.AspNetCore.SignalR.Client
 @using OpenFoodFactsCSharp.Models;
+@using Newtonsoft.Json;
 
 <PageTitle>Måltid</PageTitle>
 
@@ -81,7 +86,19 @@
     <button @onclick="btn_EmptyRecord">Ny måltid</button>
 </div>
 
+<div>
+    @foreach (var m in SignalRMessages)
+    {
+        <p>@($"Message: {m}")</p>
+    }
+    
+</div>
+
 @code {
+    // private HubConnection hubConnection;
+    private List<string> SignalRMessages = new();
+
+
     private BlazoredTypeahead<Ingredients, Ingredients> typeaheadRef;
     private List<Ingredients> IngredientsList = new List<Ingredients>();
     private Ingredients NewIngredient = new Ingredients();
@@ -119,6 +136,14 @@
             Console.WriteLine($"Fel i OnInitializedAsync: {ex.Message}");
         }
 
+        SignalRService.OnReceiveMessage((message) =>
+        {
+            message = message.Substring(message.IndexOf(":") + 1).Trim();
+            SignalRMessages.Add(message);
+            StateHasChanged();
+        });
+        
+            await SignalRService.StartAsync();
     }
     #region Searchbox    
     //Get searchresult from server and move focus to amount when done
@@ -315,4 +340,11 @@
         }
     }
     #endregion
+    // public async ValueTask DisposeAsync()
+    // {
+    //     if (hubConnection != null)
+    //     {
+    //         await hubConnection.DisposeAsync(); // Frigör SignalR-anslutningen
+    //     }
+    // }
 }

@@ -5,15 +5,25 @@ using SmartMealCalculator;
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
-var apiBaseUrl = builder.Configuration["ApiBaseUrl"] ?? builder.Configuration["API_BASE_URL"];
-Console.WriteLine($"ApiBaseUrl: {apiBaseUrl}");
 
+// Läs ApiBaseUrl och SignalRUrl från konfigurationen
+var apiBaseUrl = builder.Configuration["ApiBaseUrl"] ?? builder.Configuration["API_BASE_URL"];
+var signalRUrl = builder.Configuration["SignalRUrl"];
+
+// Validera att ApiBaseUrl och SignalRUrl är korrekt konfigurerade
 if (string.IsNullOrEmpty(apiBaseUrl))
 {
     throw new InvalidOperationException("ApiBaseUrl är inte konfigurerad. Kontrollera appsettings.json eller miljövariabeln API_BASE_URL.");
 }
 
+if (string.IsNullOrEmpty(signalRUrl))
+{
+    throw new InvalidOperationException("SignalRUrl är inte konfigurerad. Kontrollera appsettings.json.");
+}
 
+builder.Services.AddSingleton(signalRUrl);
+
+// Konfigurera HttpClient
 builder.Services.AddScoped(sp =>
 {
     var httpClient = new HttpClient
@@ -30,6 +40,11 @@ builder.Services.AddScoped(sp =>
 builder.Services.AddScoped<IngredientService>();
 builder.Services.AddScoped<MealService>();
 builder.Services.AddScoped<OpenFoodFactsService>();
+
+// SignalR-tjänsten
+builder.Services.AddSingleton<SignalRService>(sp => new SignalRService(signalRUrl));
+
+// Konfigurera OIDC-autentisering
 builder.Services.AddOidcAuthentication(options =>
 {
     builder.Configuration.Bind("Local", options.ProviderOptions);

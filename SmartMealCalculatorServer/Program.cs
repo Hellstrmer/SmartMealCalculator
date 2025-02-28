@@ -7,6 +7,8 @@ using SmartMealCalculatorServer.Helpers;
 using SmartMealCalculatorServer.Hubs;
 using Microsoft.SqlServer;
 using Microsoft.AspNetCore.Identity;
+using SmartMealCalculatorServer;
+using Microsoft.AspNetCore.SignalR;
 var builder = WebApplication.CreateBuilder(args);
 
 
@@ -102,6 +104,12 @@ else
 }
 app.MapIdentityApi<IdentityUser>();
 
+app.MapPost("broadcast", async (string message, IHubContext<SignalRhub, IWeightClient> context) =>
+{
+    await context.Clients.All.RecieveMessage(message);
+
+    return Results.NoContent();
+});
 
 app.MapControllers();
 app.MapHub<SignalRhub>("/weight");

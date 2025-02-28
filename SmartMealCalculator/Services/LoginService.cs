@@ -10,14 +10,14 @@ namespace SmartMealCalculator.Services
             _httpClient = httpClient;
         }
 
-        public async Task RegisterAsync()
-        {
-            var result = await _httpClient.PostAsJsonAsync(
-                "register", new
-                {
-                    email,
-                    password
-                });
-        }
+        //public async Task RegisterAsync()
+        //{
+        //    var result = await _httpClient.PostAsJsonAsync(
+        //        "register", new
+        //        {
+        //            email,
+        //            password
+        //        });
+        //}
     }
 }
