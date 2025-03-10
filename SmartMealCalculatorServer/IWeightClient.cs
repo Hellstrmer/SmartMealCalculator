@@ -2,6 +2,7 @@
 {
     public interface IWeightClient
     {
-        Task RecieveMessage(string message);
+        Task ReceiveMessage(string message);
+        Task ReceiveWeightData(string barcode, int weight);
     }
 }

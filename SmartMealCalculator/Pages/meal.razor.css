@@ -58,6 +58,13 @@
     cursor: pointer;
 }
 
+.container {
+    display: flex;
+    gap: 100px;
+}
+.SignalRmessage {
+    justify-content: left;
+}
 
 @media (max-width: 768px) {
     .add-ing {
@@ -68,7 +75,7 @@
     }
 
         .add-ing input, .add-ing ::deep .blazored-typeahead__input {
-            width: 100%;
+            width: 100% !important;
             font-size: 14px;
             padding: 6px 10px;
         }
@@ -100,11 +107,11 @@
                 margin-bottom: 0;
             }
 
-    .blazored-typeahead {
-        width: 100%;
+    ::deep .blazored-typeahead {
+        width: 100% !important;
     }
 
     ::deep .blazored-typeahead__results {
-        width: 100%;
+        width: 100% !important;
     }
 }

@@ -6,14 +6,16 @@ namespace SmartMealCalculatorServer.Hubs
     {
         public override async Task OnConnectedAsync()
         {
-            await Clients.All.RecieveMessage($"{Context.ConnectionId} has joined");
+            await Clients.All.ReceiveMessage($"{Context.ConnectionId} has joined");
         }
         
         public async Task SendMessage(string Message)
         {
-            await Clients.All.RecieveMessage($"{Context.ConnectionId}: {Message}");
+            await Clients.All.ReceiveMessage($"{Context.ConnectionId}: {Message}");
         }
-
-
+        public async Task SendWeightData(string barcode, int weight)
+        {
+            await Clients.All.ReceiveWeightData(barcode, weight);
+        }
     }
 }

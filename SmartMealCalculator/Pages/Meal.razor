@@ -86,17 +86,23 @@
     <button @onclick="btn_EmptyRecord">Ny måltid</button>
 </div>
 
-<div>
-    @foreach (var m in SignalRMessages)
-    {
-        <p>@($"Message: {m}")</p>
-    }
-    
+<div class="container">
+    <div class="SignalRmessage">
+        @foreach (var m in SignalRMessages)
+        {
+            <p>@($"Message: {m}")</p>
+        }    
+    </div>
+
+    <div class="Weight">
+        <p>@($"Vikt: {SignalRWeight} Gram")</p>
+    </div>
 </div>
 
 @code {
     // private HubConnection hubConnection;
     private List<string> SignalRMessages = new();
+    private int SignalRWeight = 0;
 
 
     private BlazoredTypeahead<Ingredients, Ingredients> typeaheadRef;
@@ -142,7 +148,11 @@
             SignalRMessages.Add(message);
             StateHasChanged();
         });
-        
+        SignalRService.OnReceiveWeightMessage((barcode, weight) =>
+        {
+            SignalRWeight = weight;
+            StateHasChanged();
+        });
             await SignalRService.StartAsync();
     }
     #region Searchbox    

@@ -26,7 +26,12 @@ namespace SmartMealCalculator
 
         public void OnReceiveMessage(Action<string> handler)
         {
-            hubConnection.On<string>("RecieveMessage", handler);
+            hubConnection.On<string>("ReceiveMessage", handler);
+        }        
+
+        public void OnReceiveWeightMessage(Action<string, int> handler)
+        {
+            hubConnection.On<string, int>("ReceiveWeightData", handler);
         }
 
         public async ValueTask DisposeAsync()

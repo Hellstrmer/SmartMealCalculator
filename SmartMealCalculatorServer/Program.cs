@@ -106,7 +106,7 @@ app.MapIdentityApi<IdentityUser>();
 
 app.MapPost("broadcast", async (string message, IHubContext<SignalRhub, IWeightClient> context) =>
 {
-    await context.Clients.All.RecieveMessage(message);
+    await context.Clients.All.ReceiveMessage(message);
 
     return Results.NoContent();
 });
