@@ -9,11 +9,16 @@
 
 const int touchPin = T7;
 const int touchPowerTreshold = 80;
-const int UnitPin = T9;
-const int touchUnitTreshold = 80;
-const int TarePin = T5;
-const int touchTareTreshold = 80;
-int previousTouch;
+const int UnitPin = T5;
+const int touchUnitTreshold = 69;
+const int TarePin = T9;
+const int touchTareTreshold = 74;
+int previousTouchPower;
+int previousTouchUnit;
+int previousTouchTare;
+bool PowerOn;
+bool Tare;
+bool Unit;
 
 
 //SignalR
@@ -21,13 +26,16 @@ WebSocketsClient client;
 String handshake = "{\"protocol\":\"json\",\"version\":1}";
 
 //HX711
-const int LoadCell_DOUT_Pin = 16;
-const int LoadCell_SCK_Pin = 4;
+const int LoadCell_DOUT_Pin = 17;
+const int LoadCell_SCK_Pin = 16;
+long TareOffset = 0;
+long Weight = 0;
+float calibration_factor = 1;
 HX711 scale;
 
 //Delay
 unsigned long previousMillis = 0;
-const long interval = 200;
+const long interval = 500;
 
 void WebsocketEvent(WStype_t type, uint8_t* payload, size_t length){
   switch (type) {
@@ -51,12 +59,78 @@ void SendMessage(String message){
   client.sendTXT(SignalRMessage);
 }
 
+void SendWeight(string barcode, int weight){
+  String SignalRMessage = String("{\"arguments\":[\"") + barcode +  weight "\"],\"invocationId\":\"0\",\"target\":\"SendWeightData\",\"type\":1}";
+  client.sendTXT(SignalRMessage);
+}
+
+void TareWeight(){
+
+  TareOffset = scale.read();
+}
+
+long Readweight(){
+  long rawValue = scale.read() - TareOffset;
+  
+  if (rawValue > 0) {
+    Weight = rawValue * calibration_factor;
+    return Weight;
+  } 
+  return 0;   
+}
+
+void CalibrateWeight(){
+  calibration_factor = 1010.0 / 314674.0;
+  Serial.println("Calibrated!");
+}
+
+void ReadButtons(){
+  int touchValuePowerButton = touchRead(touchPin);
+  int touchValueUnitButton = touchRead(UnitPin);
+  int touchValueTareButton = touchRead(TarePin);
+
+
+  if (touchValuePowerButton < touchPowerTreshold && previousTouchPower == 0){
+    PowerOn = true;
+    SendMessage("Startad!");
+    previousTouchPower = touchValuePowerButton;
+  } 
+  else if (touchValueUnitButton < touchUnitTreshold && previousTouchUnit == 0){    
+    Unit = true;
+    SendMessage("Unit");
+    CalibrateWeight();
+    previousTouchUnit = touchValueUnitButton;
+  } 
+  else if (touchValueTareButton < touchTareTreshold && previousTouchTare == 0){
+    Tare = true;    
+    TareWeight();
+    SendMessage("Tare");
+    Serial.println(Readweight());
+
+    previousTouchTare = touchValueTareButton;
+  } else if (touchValuePowerButton > touchPowerTreshold
+    && touchValueUnitButton > touchUnitTreshold  
+    && touchValueTareButton > touchTareTreshold) {
+    previousTouchPower = 0;
+    previousTouchUnit = 0;
+    previousTouchTare = 0;
+    PowerOn = false;
+    Tare = false;
+    Unit = false;
+  }  
+}
+
 
 
 void setup()
 {
   //Wifi
   Serial.begin(9600);
+  delay(1000);
+
+  // Serial.println("Activated deep sleep..");
+
+  // esp_sleep_enable_touchpad_wakeup();
   WiFi.begin(ssid, password);
 
   Serial.print("Connecting to Wi-Fi");
@@ -73,6 +147,8 @@ void setup()
 
 //HX711
 scale.begin(LoadCell_DOUT_Pin, LoadCell_SCK_Pin);
+TareWeight();
+CalibrateWeight();
 }
 
 void loop()
@@ -80,44 +156,25 @@ void loop()
 
   client.loop();
   unsigned long currentMillis = millis();
-  // if (currentMillis - previousMillis >= interval){
-  //   previousMillis = currentMillis;
-  //   static int messageCount = 0;
-  //   if (messageCount == 0) {
-  //       Screen();
-  //   }
-  //   // } else if (messageCount == 1) {
-  //   //   analogWrite(displayPin, 0);
-  //   // }
-  //  messageCount = (messageCount + 1) % 2;
- // }  
-  int touchValuePowerButton = touchRead(touchPin);
-  int touchValueUnitButton = touchRead(UnitPin);
-  int touchValueTareButton = touchRead(TarePin);
-  bool PowerOn;
-  bool Tare;
-  bool Unit;
-
-  if (touchValuePowerButton < touchPowerTreshold && previousTouch == 0){
-    PowerOn = true;
-    SendMessage("Startad!");
-    previousTouch = touchValuePowerButton;
-  }  else if (touchValueUnitButton < touchUnitTreshold && previousTouch == 0){
-    Tare = true;
-    SendMessage("Unit");
-  } else if (touchValueTareButton < touchTareTreshold && previousTouch == 0){
-    Unit = true;
-    SendMessage("Unit");
-  } else if (touchValuePowerButton > touchPowerTreshold
-    && touchValueUnitButton > touchUnitTreshold  
-    && touchValueTareButton > touchTareTreshold) {
-    previousTouch = 0;
-    PowerOn = false;
-    Tare = false;
-    Unit = false;
-  }
-
+  if (currentMillis - previousMillis >= interval){
+    previousMillis = currentMillis;
+    static int messageCount = 0;
+    if (messageCount == 0) {
+      if (scale.wait_ready_timeout(1000)) {
+        Serial.print("HX711 reading: ");
+        Serial.println(Readweight());
+      } else {
+        Serial.println("HX711 not found.");
+      }
+    }
+    // } else if (messageCount == 1) {
+    //   analogWrite(displayPin, 0);
+    // }
+   messageCount = (messageCount + 1) % 2;
+ }  
   
+  ReadButtons();
+  SendWeight("ESP", Readweight());
 }
 
 
