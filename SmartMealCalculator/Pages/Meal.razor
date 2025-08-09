@@ -100,7 +100,6 @@
 </div>
 
 @code {
-    // private HubConnection hubConnection;
     private List<string> SignalRMessages = new();
     private int SignalRWeight = 0;
 
@@ -205,8 +204,7 @@
     {
         await MealService.AddToDatabaseAsync(ing);
         IngredientsList = await MealService.UpdateIngredientsAsync();
-        await MealService.UpdateDatabaseAsync(ing);        
-        // NewIngredient = new Ingredients();
+        await MealService.UpdateDatabaseAsync(ing);
     }
 
     #endregion
@@ -277,7 +275,7 @@
     #region Add To Newingredient
     private async Task AddCalorie(KeyboardEventArgs e)
     {
-        if (e.Key == "Enter")
+        if (e.Key == "Enter" || e.Key == "Done" || e.Key == "Go")
         {
             if (NewCalorie.HasValue)
             {
@@ -288,16 +286,15 @@
     }
     private async Task AddAmount(KeyboardEventArgs e)
     {
-        if (e.Key == "Enter")
+        if (e.Key == "Enter" || e.Key == "Done" || e.Key == "Go")
         {
             NewIngredient.Amount = NewAmount;
-            //NewAmount = null;
             await portionInput.FocusAsync();
         }
     }
     private async Task AddPortion(KeyboardEventArgs e)
     {
-        if (e.Key == "Enter")
+        if (e.Key == "Enter" || e.Key == "Done" || e.Key == "Go")
         {
             NewIngredient.Portions = NewPortion;
             if (NewIngredient.Amount.HasValue && NewIngredient.EnergyKcal100g.HasValue && NewIngredient.Portions.HasValue)
@@ -350,11 +347,4 @@
         }
     }
     #endregion
-    // public async ValueTask DisposeAsync()
-    // {
-    //     if (hubConnection != null)
-    //     {
-    //         await hubConnection.DisposeAsync(); // Frigör SignalR-anslutningen
-    //     }
-    // }
 }
