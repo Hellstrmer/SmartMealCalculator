@@ -6,7 +6,7 @@ services:
     container_name: smartmealcalculatorServer
     ports:
       - "5099:8080"
-
+    restart: unless-stopped
     networks:
       - proxy
     environment:
@@ -32,6 +32,7 @@ services:
     container_name: smartmealcalculator
     ports:
       - "5195:80"
+    restart: unless-stopped
     networks:
       - proxy
     depends_on:
