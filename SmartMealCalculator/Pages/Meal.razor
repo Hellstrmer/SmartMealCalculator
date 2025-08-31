@@ -74,7 +74,6 @@
     @if (TotalCalories > 0)
     {
         <h4>Totalt:</h4>
-        <span>@($"{TotalCalories} Kcal")</span>
         <span>@($"{TotalAmount} g")</span>
         <span>@($"{TotalPortion} st")</span>
         <span>@($"{Math.Floor((TotalPerPortion ?? 0)):F0} Kcal/Portion")</span>
@@ -87,12 +86,12 @@
 </div>
 
 <div class="container">
-    <div class="SignalRmessage">
+    @* <div class="SignalRmessage">
         @foreach (var m in SignalRMessages)
         {
             <p>@($"Message: {m}")</p>
         }    
-    </div>
+    </div> *@
 
     <div class="Weight">
         <p>@($"Vikt: {SignalRWeight} Gram")</p>
@@ -152,7 +151,7 @@
             SignalRWeight = weight;
             StateHasChanged();
         });
-            await SignalRService.StartAsync();
+        await SignalRService.StartAsync();
     }
     #region Searchbox    
     //Get searchresult from server and move focus to amount when done
@@ -184,7 +183,8 @@
         if (ingredients == null) return;
         NewIngredient = ingredients;
         NewCalorie = NewIngredient.EnergyKcal100g;
-        NewIngredient.UseCount ++;
+        NewIngredient.UseCount++;
+        UpdateTotal(NewIngredient.Portions);
         amountInput.FocusAsync();
     }
     #endregion
@@ -205,6 +205,7 @@
         await MealService.AddToDatabaseAsync(ing);
         IngredientsList = await MealService.UpdateIngredientsAsync();
         await MealService.UpdateDatabaseAsync(ing);
+        UpdateTotal(NewIngredient.Portions);
     }
 
     #endregion
@@ -241,6 +242,9 @@
     {
         Index = index;
         NewIngredient = IngredientsList[Index];
+        NewCalorie = NewIngredient.EnergyKcal100g;
+        NewAmount = NewIngredient.Amount;
+        NewPortion = NewIngredient.Portions;
     }
     private string GetRowClass(int index)
     {
