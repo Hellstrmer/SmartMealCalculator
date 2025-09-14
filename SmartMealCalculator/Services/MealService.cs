@@ -22,6 +22,7 @@ namespace SmartMealCalculator
                 {
                     throw new Exception("No data returned from API.");
                 }
+                Console.WriteLine(response);
                 return response;
             }
             catch (Exception ex)

@@ -1,15 +1,17 @@
 import React from 'react'
+import { FaCalculator } from 'react-icons/fa'
 
-const TotalCalories = () => {
+const TotalCalories = ( {Total}) => {
     let TotalAmount;
     let TotalPortion;
     let TotalPerPortion;
   return (
-    <div className='AddIngredients'>        
+    <div className='total-calories'> 
     <h4 >Totalt:</h4>
-        <span>{TotalAmount} g</span>
-        <span>{TotalPortion} st</span>
-        <span>{TotalPerPortion} Kcal/Portion</span>
+        <span>{String(Total.TotalAmount)} g</span>
+        <span>{Total.TotalPortion} st</span>
+        <span>{Total.TotalPerPortion} Kcal/Portion</span>
+        <FaCalculator />
     </div>
   )
 }

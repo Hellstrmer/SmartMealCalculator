@@ -77,6 +77,14 @@
             box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
         }
 
+.rbt-menu {
+    margin-bottom: 2px !important;
+    background-color: white !important;
+}
+
+.rbt-menu dropdown-menu show {
+    background-color: white;
+}
 
 .ingredient-row span {
     font-size: 16px;

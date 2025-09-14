@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 
 const IngredientsList = () => {
-    let Ingredients = [
+    let Ingredientss = [
         {
             "ProductName": "Pasta",
             "Brand": "Ica",
@@ -20,20 +20,20 @@ const IngredientsList = () => {
             "Fat": 20,
         }
     ];
-    console.log(Ingredients);
+    //console.log(Ingredients);
     const [showAll, setShowAll] = useState(false);
 
     let showIng = [];
 
     if (!showAll) {
-        showIng = Ingredients.slice(0, 1);
+        showIng = Ingredientss.slice(0, 1);
     }
     else {
-        showIng = Ingredients;
+        showIng = Ingredientss;
     }
 
     return (
-        <div className="ingredient-row">
+        <div className="ingredient-rows">
             {showIng.map((Ingredient, index) => (
                 <div key={index} className="ingredient-row">
                     <span>{Ingredient.ProductName}</span>

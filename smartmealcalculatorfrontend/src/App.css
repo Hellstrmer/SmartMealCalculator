@@ -1,8 +1,57 @@
+css.app-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.Header {
+    width: 100%;
+    padding: 10px 20px;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.HeaderTitle {
+    margin: 0;
+    color: white;
+    flex: 1;
+    font-size: 25px;
+    text-align: center;
+}
+
+.main-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Navbar tar fast bredd */
+.navbar-container {
+    width: 150px;
+    margin-left: 20px;
+    flex-shrink: 0;
+    background-color: #1e1f22;
+}
+
+/* Huvudinnehåll tar resten av utrymmet */
+.content {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
 .loading-indicator {
     color: #1abc9c;
     font-size: 14px;
     margin-left: 10px;
     cursor: wait;
+}
+
+.Total{
+    display: flex;
+    gap: 10px;
 }
 
 .AddIngredients {
@@ -15,13 +64,14 @@
     font-weight: 500;
     gap: 10px;
     padding: 10px;
+    margin-top: 10px;
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
     .AddIngredients input {
-        width: 30%;
+        /* width: 30%; */
         background: #2C2F33;
         border: 1px solid #444952;
         border-radius: 8px;
@@ -37,7 +87,7 @@
             box-shadow: 0 0 5px rgba(26, 100, 156, 0.5);
         }
 
-    .AddIngredients :hover {
+    .AddIngredients input:hover {
         border: 1px solid #95a5a6;
     }
 
@@ -46,13 +96,11 @@
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     }
 
-    .AddIngredients ::deep .blazored-typeahead__input:focus {
-        border: 1px solid #1a649c;
-        box-shadow: 0 0 5px rgba(26, 100, 156, 0.5);
-    }
+
 
     .AddIngredients:hover {
         color: #ffffff;
+        
     }
 
     .AddIngredients button {
@@ -77,6 +125,60 @@
             box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
         }
 
+.Typeahead {
+    width: 300px;
+}
+
+/* .rbt-menu {
+    margin-bottom: 2px;
+    background-color: white;
+    color: white;
+}
+.dropdown-item {
+    color:black;
+} */
+ .rbt-menu .dropdown-item {
+    width: 300px;
+    display: block;
+    background-color: white;
+    color:black;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.rbt-input-main.form-control.rbt-input {
+    width: 400px !important;
+}
+.rbt-highlight-text {
+    background-color: White;
+}
+
+
+.total-calories {
+    display: flex;
+    align-items: center;
+    background-color: #313338;
+    color: #ecf0f1;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    gap: 15px;
+    padding: 8px 15px;
+    margin-top: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.total-calories h4 {
+    margin: 0;
+    font-weight: 600;
+}
+
+.total-calories span {
+    margin: 0;
+    padding: 0;
+    font-size: 0.9rem;
+}
 
 .ingredient-row span {
     font-size: 16px;
@@ -99,15 +201,21 @@ div.active-ingredient-row {
     font-size: 18px;
 }
 
+.ingredient-rows {
+    flex-direction: column;
+    margin-top:0px
+}
+
 .ingredient-row, .active-ingredient-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top: 10px;
     margin-bottom: 5px;
-    padding: 5px;
+    padding: 10px;
     border-bottom: 1px solid #ccc;
     border-color: #fafafb;
+    border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
@@ -118,10 +226,7 @@ div.active-ingredient-row {
     }
 
     .ingredient-row span, .active-ingredient-row span {
-        flex: 1;
-        text-align: left;
-        align-content: center;
-        width: 60px;
+        text-align: left;        
         color: #d0dee1;
     }
 

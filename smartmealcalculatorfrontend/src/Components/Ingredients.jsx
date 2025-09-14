@@ -1,20 +1,25 @@
 import React from 'react'
+import { useState, useEffect } from 'react';
 
-const Ingredients = () => {
+const Ingredients = ({NewIngredient}) => {
     let ProductName;
     let EnergyKcal100g;
     let Amount;
     let Portions;
     let PerPortion;
-    
-    return (
-       <div className="ingredient-row">               
-    <span>{ProductName}</span>               
-    <span>{EnergyKcal100g} Kcal/100g</span>                
-    <span>{Amount} g)</span>               
-    <span>{Portions} st)</span>               
-    <span>{PerPortion} Kcal/Portion)</span>            
-    </div> 
+
+
+ return (
+        <div className="ingredient-rows">
+            {NewIngredient.map((Ingredient, index) => (
+                <div key={index} className="ingredient-row">
+                    <span>{Ingredient.name}</span>
+                    <span>{Ingredient.kcal} Kcal/100g</span>
+                    <span>{Ingredient.grams} g</span>
+                    <span>{Ingredient.portions} st</span>
+                </div>
+            ))}            
+        </div>
     )
 }
 

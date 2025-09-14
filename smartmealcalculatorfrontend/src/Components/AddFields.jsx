@@ -1,21 +1,79 @@
 import React from 'react'
+import { Typeahead } from 'react-bootstrap-typeahead';
+import { useState, useEffect } from 'react';
 
-const AddFields = ({title="defaultTitle", subtitle}) => {
-   let Product = "Sök Produkt...";
-    let Kcal;
-    let Grams;
-    let Portions;
-    
+const AddFields = ({ IngredientsList, formData, updateField, loading, fetchIngrediens, AddToIngList}) => {
+    const [selected, setSelected] = useState([]);
+    // useEffect(() => {
+    //     if (IngredientsList.length > 0) {
+    //         console.log(IngredientsList);
+    //     }
+    // }, [IngredientsList]);
+
+
+    const handleInputChange = (Name) => {
+        fetchIngrediens(Name);
+    }
+
+    const options = IngredientsList.map((Ingredient, index) => ({
+        id: index,
+        label: Ingredient.productName
+    }));
+
+
+    const handleSelectionChange = (selectedOptions) => {
+        setSelected(selectedOptions);
+
+        if (selectedOptions.length > 0) {
+            const selectedIngredient = IngredientsList[selectedOptions[0].id];
+            const KcalValue = selectedIngredient.energyKcal100g;
+            console.log(selectedIngredient);
+            updateField('name', selectedIngredient.productName);
+            updateField('kcal', KcalValue);
+            console.log("Kcal: " + KcalValue);
+        } else {
+            updateField('kcal', '');
+        }
+    }
+
     return (
         <div className='AddIngredients'>
-            <h1>{title} </h1>
-            <h2>{subtitle} </h2>
-            <input placeholder={Product} />
-            <input placeholder={`${Kcal || ''} (/100g)`} />
-            <input placeholder={`${Grams || ''} (g)`} />
-            <input placeholder={`${Portions || ''} (st)`} />
+            <Typeahead className='Typeahead'
+                allowNew
+                id="custom-selections-example"
+                clearButton={false}
+                newSelectionPrefix="Lägg till: "
+                options={options}
+                selected={selected}
+                onChange={handleSelectionChange}
+                onInputChange={handleInputChange}
+                placeholder="Produkt..."
+                labelKey="label"
+                loading={loading}
+                minLength={2}
+                multiple={false}
+            />
+            <input 
+                placeholder="Lägg till kalorier (/100g)"
+                value={formData.kcal}
+               onChange={(e) => updateField('kcal', e.target.value)}
+                onKeyDown={AddToIngList}
+            />
+            <input 
+                placeholder="Lägg till mängd (g)"
+                value={formData.grams}
+                onChange={(e) => updateField('grams', e.target.value)}
+                onKeyDown={AddToIngList}
+            />
+            <input 
+                placeholder="Antal portioner (st)"
+                value={formData.portions}
+                onChange={(e) => updateField('portions', e.target.value)}
+                onKeyDown={AddToIngList}
+            />
         </div>
     )
 }
+
 
 export default AddFields
