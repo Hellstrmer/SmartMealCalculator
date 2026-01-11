@@ -4,7 +4,6 @@ using SmartMealCalculatorServer;
 using SmartMealCalculatorServer.Helpers;
 using System.Diagnostics;
 using System.Xml.Linq;
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace SmartMealCalculatorServer.Controllers
 {
@@ -24,7 +23,7 @@ namespace SmartMealCalculatorServer.Controllers
         public async Task<IActionResult> GetIngredients()
         {
             var IngredientsList = await _context.Ingredients.ToListAsync();
-
+            Console.WriteLine("GetIngredients Called!!");
             var SortedList = IngredientsList.
                 OrderByDescending(x => x.Created)
                 .ThenBy(x => x.ProductName)
@@ -34,7 +33,7 @@ namespace SmartMealCalculatorServer.Controllers
             return Ok(SortedList);
 
         }
-        [HttpPost("AddIngredient")] 
+        [HttpPost("AddIngredient")]
         public async Task<IActionResult> AddIngredient(Ingredients ingredient)
         {
             Debug.WriteLine($"Received Ingredient: {ingredient?.ProductName}, {ingredient?.Brands}, {ingredient?.EnergyKcal100g}");
@@ -44,16 +43,17 @@ namespace SmartMealCalculatorServer.Controllers
             }
             try
             {
-                var ing = await _context.Ingredients.FirstOrDefaultAsync(x =>
-            x.ProductName == ingredient.ProductName
-            && x.Brands == ingredient.Brands);
+                var ing = await _context.Ingredients
+                    .FirstOrDefaultAsync(x =>
+                        x.ProductName == ingredient.ProductName
+                    && x.Brands == ingredient.Brands);
                 if (ing != null)
                 {
                     return BadRequest("Already added!");
                 }
                 _context.Ingredients.Add(ingredient);
                 Debug.WriteLine("Adding ingredient to database...");
-                await _context.SaveChangesAsync(); 
+                await _context.SaveChangesAsync();
                 Debug.WriteLine("Ingredient added successfully!");
                 return Ok(ingredient);
             }
@@ -77,6 +77,6 @@ namespace SmartMealCalculatorServer.Controllers
             _context.Ingredients.Remove(ingredient);
             await _context.SaveChangesAsync();
             return Ok($"Ingredient '{name}' deleted successfully.");
-        }        
+        }
     }
 }

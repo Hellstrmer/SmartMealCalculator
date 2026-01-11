@@ -91,13 +91,13 @@
     }
     #region Handle Inputs
     private void HandleInput(ChangeEventArgs e)
-    {        
+    {
         NewIngredientString = e.Value.ToString();
 
     }
     private void HandleInputBrand(ChangeEventArgs e)
     {
-        NewBrand = e.Value.ToString();        
+        NewBrand = e.Value.ToString();
     }
     private void HandleInputCalorie(ChangeEventArgs e)
     {
@@ -115,19 +115,19 @@
             if (!string.IsNullOrWhiteSpace(NewIngredientString))
             {
                 NewIngredient = (new Ingredients
-                    {
-                        ProductName = NewIngredientString,
-                        Amount = 0,
-                        Portions = 0,
-                        PerPortion = 0,
-                        Brands = "",
-                        Salt100g = 0,
-                        Fat100g = 0,
-                        Sugars100g = 0,
-                        Carbohydrates100g = 0,
-                        EnergyKcal100g = 0,
-                        Proteins100g = 0
-                    });
+                {
+                    ProductName = NewIngredientString,
+                    Amount = 0,
+                    Portions = 0,
+                    PerPortion = 0,
+                    Brands = "",
+                    Salt100g = 0,
+                    Fat100g = 0,
+                    Sugars100g = 0,
+                    Carbohydrates100g = 0,
+                    EnergyKcal100g = 0,
+                    Proteins100g = 0
+                });
                 NewIngredientString = string.Empty;
                 Index = IngredientsList.Count - 1;
 
@@ -166,7 +166,6 @@
     {
         if (SearchName != null)
         {
-           
             bool isBarcode(string s) => s.All(char.IsDigit);
             if (!isBarcode(SearchName))
             {
@@ -187,7 +186,7 @@
                     FoundIngredients.Add(ing);
                     await AddIngredient(ing);
                 }
-            } 
+            }
             else
             {
                 var result = await OpenFoodFactsService.SearchBarcodeASync(SearchName);
@@ -207,7 +206,7 @@
 
             }
 
-            
+
         }
     }
 }

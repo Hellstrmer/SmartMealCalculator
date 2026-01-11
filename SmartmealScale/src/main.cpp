@@ -9,7 +9,6 @@
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
 
-
 // Buttons
 
 const int touchPin = T7;
@@ -37,19 +36,18 @@ long Weight = 0;
 float calibration_factor = 1;
 HX711 scale;
 
-//Screen
-// #define OLED_DC 18 
-// #define OLED_RESET 19  
-// #define OLED_CS 23  
-// #define OLED_SDA 13
-// #define OLED_SCL 5
-// #define SCREEN_WIDTH 128
-// #define SCREEN_HEIGHT 64
-// #define OLED_RESET     -1 // Reset pin # (or -1 if sharing Arduino reset pin)
-// #define SCREEN_ADDRESS 0x3C
-// #define SDA_PIN 22
-// #define SCL_PIN 21
-
+// Screen
+//  #define OLED_DC 18
+//  #define OLED_RESET 19
+//  #define OLED_CS 23
+//  #define OLED_SDA 13
+//  #define OLED_SCL 5
+//  #define SCREEN_WIDTH 128
+//  #define SCREEN_HEIGHT 64
+//  #define OLED_RESET     -1 // Reset pin # (or -1 if sharing Arduino reset pin)
+//  #define SCREEN_ADDRESS 0x3C
+//  #define SDA_PIN 22
+//  #define SCL_PIN 21
 
 // Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
@@ -76,8 +74,9 @@ unsigned long previousMillis = 0;
 unsigned long previousMillisTare = 0;
 const long interval = 500;
 
-//Tare
-enum TareState {
+// Tare
+enum TareState
+{
   Tare_Idle,
   Tare_Wait,
   Tare_Read
@@ -101,16 +100,15 @@ void StartWifi()
   Serial.println("\nConnected to Wi-Fi!");
 }
 
-
 void WebsocketEvent(WStype_t type, uint8_t *payload, size_t length)
 {
   switch (type)
   {
   case WStype_DISCONNECTED:
-    Serial.println("Disconnected from WebSocket server");
+    Serial.println("Disconnected from SmartmealServer");
     break;
   case WStype_CONNECTED:
-    Serial.println("Connected to WebSocket server");
+    Serial.println("Connected to SmartmealServer");
     client.sendTXT(handshake);
     delay(300);
     break;
@@ -132,32 +130,36 @@ void SendWeight(String barcode, int weight)
 long Readweight()
 {
   long rawValue = scale.read() - TareOffset;
-   return rawValue * calibration_factor;
+  return rawValue * calibration_factor;
 }
 
 void TareWeight()
 {
-  switch(tareState) {
-    case Tare_Idle:
-    if (Tare) {
+  switch (tareState)
+  {
+  case Tare_Idle:
+    if (Tare)
+    {
       tareState = Tare_Wait;
       tareStartTime = millis();
       break;
     }
     break;
-    
-    case Tare_Wait:
-    if (millis() - tareStartTime >= 500) {
+
+  case Tare_Wait:
+    if (millis() - tareStartTime >= 500)
+    {
       tareState = Tare_Read;
     }
     break;
 
-    case Tare_Read:
+  case Tare_Read:
     if (CurrentIndex < TareCount)
     {
       sum += scale.read();
       CurrentIndex += 1;
-    } else 
+    }
+    else
     {
       TareOffset = sum / TareCount;
       CurrentIndex = 0;
@@ -220,11 +222,10 @@ void ProcessWeight()
   SendWeight("ESP", weight);
 }
 
-
 void StartSignalR()
 {
-client.begin("192.168.50.51", 5099, "/weight");
-client.onEvent(WebsocketEvent);
+  client.begin("192.168.50.51", 5099, "/weight");
+  client.onEvent(WebsocketEvent);
 }
 
 void StartScale()
@@ -237,12 +238,15 @@ void StartScale()
 
 void setup()
 {
-  Serial.begin(9600);
-  //Wire.begin(SDA_PIN, SCL_PIN);
+  Serial.begin(115200);
+  delay(100);
+  // Wire.begin(SDA_PIN, SCL_PIN);
   delay(100);
   StartWifi();
   StartSignalR();
+
   StartScale();
+
   // if(!display.begin(SSD1306_SWITCHCAPVCC, SCREEN_ADDRESS)) {
   //   Serial.println(F("SSD1306 allocation failed"));
   //   for(;;); // Don't proceed, loop forever
@@ -284,7 +288,6 @@ void loop()
 // #define OLED_RESET    -1 // Reset pin # (or -1 if sharing Arduino reset pin)
 // #define SCREEN_ADDRESS 0x3C // Prova 0x3D om 0x3C inte fungerar
 
-
 // SSD1306Wire  display(0x3c, 21, 22);
 // #define DEMO_DURATION 3000
 // typedef void (*Demo)(void);
@@ -296,7 +299,6 @@ void loop()
 //   Serial.begin(115200);
 //   Serial.println();
 //   Serial.println();
-
 
 //   // Initialising the UI will init the display too.
 //   display.init();
@@ -380,7 +382,6 @@ void loop()
 //   display.setTextAlignment(TEXT_ALIGN_CENTER);
 //   display.drawString(64, 15, String(progress) + "%");
 // }
-
 
 // Demo demos[] = {drawFontFaceDemo, drawTextFlowDemo, drawTextAlignmentDemo, drawRectDemo, drawCircleDemo, drawProgressBarDemo};
 // int demoLength = (sizeof(demos) / sizeof(Demo));

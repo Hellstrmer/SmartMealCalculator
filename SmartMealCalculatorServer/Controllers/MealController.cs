@@ -10,10 +10,12 @@ namespace SmartMealCalculatorServer.Controllers
     public class MealController : ControllerBase
     {
         private readonly IngredientsDbContext _context;
-        private static List<Ingredients> MealList = new List<Ingredients>();
-        public MealController(IngredientsDbContext context) 
+        private List<Ingredients> MealList = new List<Ingredients>();
+        private GetOpenFoodFactsData _getOpenFoodFactsData;
+        public MealController(IngredientsDbContext context, GetOpenFoodFactsData getOpenFoodFactsData)
         {
             _context = context;
+            _getOpenFoodFactsData = getOpenFoodFactsData;
             //MealList = new List<Ingredients>();
         }
 
@@ -21,31 +23,40 @@ namespace SmartMealCalculatorServer.Controllers
         [HttpGet("GetIngredients")]
         public async Task<IActionResult> GetIngredients([FromQuery] string name)
         {
-            if (name == null|| string.IsNullOrWhiteSpace(name))
+            if (name == null || string.IsNullOrWhiteSpace(name))
             {
                 return BadRequest("Invalid");
             }
-            var ing = await _context.Ingredients.Where(x =>
-            x.ProductName.ToLower().Contains(name.ToLower()) ||
-            x.Brands.ToLower().Contains(name.ToLower()))
+            var ing = await _context.Ingredients
+                .Where(x => x.ProductName.ToLower().Contains(name.ToLower()) ||
+                        x.Brands.ToLower().Contains(name.ToLower()))
                 .ToListAsync();
+            if (ing.Count == 0)
+            {
+                await _getOpenFoodFactsData.Search(name);
+                ing = await _context.Ingredients
+                .Where(x => x.ProductName.ToLower().Contains(name.ToLower()) ||
+                        x.Brands.ToLower().Contains(name.ToLower()))
+                .ToListAsync();
+            }
             var SortedList = ing.
                 OrderByDescending(x => x.UseCount)
                 .ThenBy(x => x.ProductName)
                 .ThenBy(x => x.Brands)
                 .ToList();
 
+            Console.WriteLine("Found: " + SortedList.Count.ToString());
             if (SortedList.Count == 0)
             {
                 return NotFound();
             }
-            return Ok(SortedList);            
+            return Ok(SortedList);
         }
         [HttpGet("UpdateIngredients")]
         public async Task<IActionResult> UpdateIngredients()
         {
             return Ok(MealList);
-        }        
+        }
         //Add to List
         [HttpPost("AddIngredient")]
         public async Task<IActionResult> AddIngredient(Ingredients ingredients)
@@ -93,7 +104,7 @@ namespace SmartMealCalculatorServer.Controllers
         public async Task<IActionResult> DeleteIngredient([FromBody] string name)
         {
             bool deleted = false;
-            for (int i = 0;i < MealList.Count; i++)
+            for (int i = 0; i < MealList.Count; i++)
             {
                 if (MealList[i].ProductName.ToLower().Contains(name.ToLower()))
                 {
@@ -105,7 +116,8 @@ namespace SmartMealCalculatorServer.Controllers
             if (!deleted)
             {
                 return NotFound($"Ingredient with name '{name}' not found.");
-            } else
+            }
+            else
             {
                 return Ok($"Ingredient '{name}' deleted successfully.");
             }
@@ -117,7 +129,8 @@ namespace SmartMealCalculatorServer.Controllers
             if (MealList.Count > 0)
             {
                 return BadRequest("Empty record failed!");
-            } else
+            }
+            else
             {
                 return Ok();
             }
@@ -130,7 +143,7 @@ namespace SmartMealCalculatorServer.Controllers
             {
                 return NotFound();
             }
-            _context.Entry(DatabaseIngredient).CurrentValues.SetValues(ingredients);    
+            _context.Entry(DatabaseIngredient).CurrentValues.SetValues(ingredients);
             await _context.SaveChangesAsync();
             return Ok();
         }

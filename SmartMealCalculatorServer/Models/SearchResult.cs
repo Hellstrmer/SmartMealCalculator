@@ -6,6 +6,7 @@ namespace OpenFoodFactsCSharp.Models
     {
         public int Count { get; set; }       // Antal produkter som matchar sökningen
         public List<Product> Products { get; set; }  // Lista med de produkter som returneras
+        
     }
 
 }

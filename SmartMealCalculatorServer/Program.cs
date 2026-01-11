@@ -1,14 +1,15 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.AspNetCore.Routing.Matching;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
+using Microsoft.SqlServer;
+using SmartMealCalculator;
+using SmartMealCalculatorServer;
 using SmartMealCalculatorServer.Auth;
 using SmartMealCalculatorServer.Helpers;
 using SmartMealCalculatorServer.Hubs;
-using Microsoft.SqlServer;
-using Microsoft.AspNetCore.Identity;
-using SmartMealCalculatorServer;
-using Microsoft.AspNetCore.SignalR;
 var builder = WebApplication.CreateBuilder(args);
 
 
@@ -79,6 +80,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 //SignalR
 builder.Services.AddSignalR();
+//OpenFoodFacts
+builder.Services.AddHttpClient<OpenFoodFactsService>();
+builder.Services.AddScoped<GetOpenFoodFactsData>();
 
 builder.Services.AddResponseCompression(opts =>
 {
