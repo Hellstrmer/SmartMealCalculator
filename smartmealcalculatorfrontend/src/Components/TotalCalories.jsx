@@ -10,7 +10,8 @@ const TotalCalories = ( {Total}) => {
     <h4 >Totalt:</h4>
         <span>{String(Total.TotalAmount)} g</span>
         <span>{Total.TotalPortion} st</span>
-        <span>{Total.TotalPerPortion} Kcal/Portion</span>
+        <span>{Total.TotalKcalPerPortion} Kcal/Portion</span>
+        <span>{Total.TotalProteinPerPortion} g Protein/Portion</span>
         <FaCalculator />
     </div>
   )

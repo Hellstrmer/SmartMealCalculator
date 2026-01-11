@@ -70,8 +70,15 @@ css.app-container {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+    .AddIngredients #portions {
+        width: 110px;
+    }
+    .AddIngredients #grams {
+        width: 110px;
+    }
+
     .AddIngredients input {
-        /* width: 30%; */
+        width: 139px;
         background: #2C2F33;
         border: 1px solid #444952;
         border-radius: 8px;
@@ -95,8 +102,6 @@ css.app-container {
         color: #ffffff;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     }
-
-
 
     .AddIngredients:hover {
         color: #ffffff;

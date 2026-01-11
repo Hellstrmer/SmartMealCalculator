@@ -4,33 +4,32 @@ import { useState, useEffect } from 'react';
 
 const AddFields = ({ IngredientsList, formData, updateField, loading, fetchIngrediens, AddToIngList}) => {
     const [selected, setSelected] = useState([]);
-    // useEffect(() => {
-    //     if (IngredientsList.length > 0) {
-    //         console.log(IngredientsList);
-    //     }
-    // }, [IngredientsList]);
 
+    useEffect(() => {
+        console.log("Ing: ", IngredientsList);
+    }, [IngredientsList]);
 
     const handleInputChange = (Name) => {
         fetchIngrediens(Name);
     }
 
-    const options = IngredientsList.map((Ingredient, index) => ({
+    const options = IngredientsList?.map((Ingredient, index) => ({
         id: index,
-        label: Ingredient.productName
-    }));
+        label: Ingredient.productName + ", " + Ingredient.brands
+    })) || [];
 
 
     const handleSelectionChange = (selectedOptions) => {
         setSelected(selectedOptions);
-
         if (selectedOptions.length > 0) {
             const selectedIngredient = IngredientsList[selectedOptions[0].id];
             const KcalValue = selectedIngredient.energyKcal100g;
+            const proteinValue = selectedIngredient.proteins100g;
             console.log(selectedIngredient);
             updateField('name', selectedIngredient.productName);
             updateField('kcal', KcalValue);
-            console.log("Kcal: " + KcalValue);
+            updateField('protein', proteinValue);
+            console.log('Kcal: ' + KcalValue);
         } else {
             updateField('kcal', '');
         }
@@ -54,18 +53,29 @@ const AddFields = ({ IngredientsList, formData, updateField, loading, fetchIngre
                 multiple={false}
             />
             <input 
+                id='kcal'
                 placeholder="Lägg till kalorier (/100g)"
                 value={formData.kcal}
                onChange={(e) => updateField('kcal', e.target.value)}
                 onKeyDown={AddToIngList}
             />
+            {/* Lägg till flera rader med carbs osv när du listat ut hur det ska se ut */}
             <input 
+                id='protein'
+                placeholder="Lägg till protein (/100g)"
+                value={formData.protein}
+               onChange={(e) => updateField('protein', e.target.value)}
+                onKeyDown={AddToIngList}
+            />
+            <input 
+                id='grams'
                 placeholder="Lägg till mängd (g)"
                 value={formData.grams}
                 onChange={(e) => updateField('grams', e.target.value)}
                 onKeyDown={AddToIngList}
             />
             <input 
+                id='portions'
                 placeholder="Antal portioner (st)"
                 value={formData.portions}
                 onChange={(e) => updateField('portions', e.target.value)}
