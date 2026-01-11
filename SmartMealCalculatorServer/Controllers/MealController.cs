@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SmartMealCalculatorServer.Helpers;
 
@@ -20,6 +19,12 @@ namespace SmartMealCalculatorServer.Controllers
         }
 
         private static List<Ingredients> FoundIngredientsList = new List<Ingredients>();
+        /// <summary>
+        /// Search for an ingredient in DB,
+        /// If not found, search in OpenFoodFacts API for the ingredient
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         [HttpGet("GetIngredients")]
         public async Task<IActionResult> GetIngredients([FromQuery] string name)
         {
@@ -45,7 +50,7 @@ namespace SmartMealCalculatorServer.Controllers
                 .ThenBy(x => x.Brands)
                 .ToList();
 
-            Console.WriteLine("Found: " + SortedList.Count.ToString());
+            //Console.WriteLine("Found: " + SortedList.Count.ToString());
             if (SortedList.Count == 0)
             {
                 return NotFound();
@@ -75,12 +80,37 @@ namespace SmartMealCalculatorServer.Controllers
                     break;
                 }
             }
-            if (!Changed)
-            {
+            if (!Changed)            
                 MealList.Add(ingredients);
-            }
+            
             return Ok(MealList);
         }
+
+        /// <summary>
+        /// Update Ingredient use Count when added to recipe
+        /// </summary>
+        /// <param name="ingredient"></param>
+        /// <returns></returns>
+        /// 
+        [HttpPost("UpdateUseCount")]
+        public async Task<IActionResult> UpdateUseCount([FromBody] string name)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+                return BadRequest("Invalid Ingredient");
+            
+            var ing = await _context.Ingredients
+                        .FirstOrDefaultAsync(x => x.ProductName == name);
+
+            if (ing == null)
+                return BadRequest("Not found in database");
+            if (ing.UseCount == null)            
+                ing.UseCount = 0;
+            
+            ing.UseCount += 1;
+            await _context.SaveChangesAsync();
+            return Ok();
+        }
+
         //Add to Database
         [HttpPost("AddToDatabase")]
         public async Task<IActionResult> AddToDatabase(Ingredients ingredient)
@@ -89,13 +119,12 @@ namespace SmartMealCalculatorServer.Controllers
             {
                 return BadRequest("Invalid Ingredient.");
             }
-            var ing = await _context.Ingredients.FirstOrDefaultAsync(x =>
-            x.ProductName == ingredient.ProductName
-            && x.Brands == ingredient.Brands);
-            if (ing != null)
-            {
+            var ing = await _context.Ingredients
+                .FirstOrDefaultAsync(x => x.ProductName == ingredient.ProductName
+                                    && x.Brands == ingredient.Brands);
+            if (ing != null)            
                 return BadRequest("Already added!");
-            }
+            
             _context.Ingredients.Add(ingredient);
             await _context.SaveChangesAsync();
             return Ok(ingredient);
@@ -106,7 +135,7 @@ namespace SmartMealCalculatorServer.Controllers
             bool deleted = false;
             for (int i = 0; i < MealList.Count; i++)
             {
-                if (MealList[i].ProductName.ToLower().Contains(name.ToLower()))
+                if (MealList[i].ProductName.Contains(name, StringComparison.CurrentCultureIgnoreCase))
                 {
                     MealList.Remove(MealList[i]);
                     deleted = true;

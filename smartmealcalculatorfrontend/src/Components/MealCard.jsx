@@ -20,30 +20,6 @@ const MealCard = () => {
     }
   }, [formData.name, formData.grams, formData.portions]);
 
-  // useEffect(() => {
-  //   if (NewIngredient.length > 0) {
-  //     let TotalCount = {
-  //       TotalAmount: 0,
-  //       TotalKcalPortion: 0,
-  //       TotalKcalPerPortion: 0,
-  //       TotalProtein: 0,
-  //       TotalProteinPerPortion: 0,
-  //       TotalCarbs: 0,
-  //       TotalCarbsPerPortion: 0,
-  //       TotalSugars: 0,
-  //       TotalSugarsPerPortion: 0,
-  //     };
-  //     NewIngredient.map((Ingredients) => {
-  //       TotalCount.TotalAmount += parseInt(Ingredients.grams);
-  //       TotalCount.TotalKcalPortion += parseInt(Ingredients.portions);
-  //       TotalCount.TotalProtein += parseInt(Ingredients.protein);
-  //     })
-  //     TotalCount.TotalKcalPerPortion = (TotalCount.TotalAmount / TotalCount.TotalKcalPortion).toFixed();
-  //     TotalCount.TotalProteinPerPortion = (TotalCount.TotalAmount / TotalCount.TotalProtein).toFixed();
-  //     console.log(TotalCount);
-  //     setTotal(TotalCount)
-  //   }
-  // }, [NewIngredient])
 
   return (
     <>

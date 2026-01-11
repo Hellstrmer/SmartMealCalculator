@@ -6,14 +6,16 @@ const AddFields = ({ IngredientsList, formData, updateField, loading, fetchIngre
     const [selected, setSelected] = useState([]);
 
     useEffect(() => {
-        console.log("Ing: ", IngredientsList);
+        //console.log("Ing: ", IngredientsList);
     }, [IngredientsList]);
 
     const handleInputChange = (Name) => {
         fetchIngrediens(Name);
     }
 
-    const options = IngredientsList?.map((Ingredient, index) => ({
+    const options = IngredientsList
+    ?.sort((a, b) => (b.useCount || 0) - (a.useCount || 0))
+    .map((Ingredient, index) => ({
         id: index,
         label: Ingredient.productName + ", " + Ingredient.brands
     })) || [];
@@ -25,11 +27,11 @@ const AddFields = ({ IngredientsList, formData, updateField, loading, fetchIngre
             const selectedIngredient = IngredientsList[selectedOptions[0].id];
             const KcalValue = selectedIngredient.energyKcal100g;
             const proteinValue = selectedIngredient.proteins100g;
-            console.log(selectedIngredient);
+            //console.log(selectedIngredient);
             updateField('name', selectedIngredient.productName);
             updateField('kcal', KcalValue);
             updateField('protein', proteinValue);
-            console.log('Kcal: ' + KcalValue);
+            //console.log('Kcal: ' + KcalValue);
         } else {
             updateField('kcal', '');
         }
